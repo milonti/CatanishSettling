@@ -1,3 +1,4 @@
+
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -41,7 +42,7 @@ public class AppWindow {
 	private void initialize() {
 		frmCatatonicSettlers = new JFrame();
 		frmCatatonicSettlers.setTitle("Catatonic Settlers");
-		frmCatatonicSettlers.setBounds(100, 100, 900, 700);
+		frmCatatonicSettlers.setBounds(100, 100, 900, 750);
 		frmCatatonicSettlers.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmCatatonicSettlers.getContentPane().setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		gamePanel = new MainGamePanel();
