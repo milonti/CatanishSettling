@@ -14,9 +14,8 @@ public class MainGamePanel extends JPanel {
 	private GameBoardPanel GameBoard;
 	private OtherPlayerPanel OtherPlayers;
 	private ChatPanel ChatPanel;
-	
-	
 	private GameStatusPanel StateOfGamePanel;
+	
 	private GameLogic gl;
 	private SpringLayout layout;
 	public MainGamePanel() {
@@ -68,6 +67,7 @@ public class MainGamePanel extends JPanel {
 		add(GameBoard);
 		
 		GameBoard.repaint();
+		gl.setPanels(GameBoard, StateOfGamePanel, ActivePlayer, OtherPlayers, ChatPanel, this);
 		
 	}
 	

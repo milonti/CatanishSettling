@@ -7,6 +7,9 @@ import javax.swing.SwingConstants;
 import java.awt.Font;
 import javax.swing.JSeparator;
 import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.JTextField;
 
 
@@ -294,4 +297,6 @@ public class OtherPlayerPanel extends JPanel {
 		this.gl = l;
 		
 	}
+	
+	
 }

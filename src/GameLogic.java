@@ -2,9 +2,18 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Hashtable;
 
+import javax.swing.JFrame;
+
 
 public class GameLogic {
 	
+	private ActivePlayerPanel ActivePlayer;
+	private GameBoardPanel GameBoard;
+	private OtherPlayerPanel OtherPlayers;
+	private ChatPanel ChatPanel;
+	private GameStatusPanel StateOfGamePanel;
+	private MainGamePanel MainGamePanel;
+	private JFrame tFrame;
 	
 	ArrayList<GamePiece> allP;
 	
@@ -18,6 +27,7 @@ public class GameLogic {
 	
 	
 	ArrayList<Integer> hexRolls;
+	
 	
 	public GameLogic(){
 		thief = new GamePiece();
@@ -49,6 +59,11 @@ public class GameLogic {
 		hexRolls.add(2);
 		hexRolls.add(6);
 		
+		ActivePlayer = null;
+		GameBoard = null;
+		OtherPlayers = null;
+		ChatPanel = null;
+		StateOfGamePanel = null;
 		
 		
 		
@@ -57,7 +72,41 @@ public class GameLogic {
 	}
 
 	public String getActivePlayer() {
-		
 		return activePlayer;
 	}
+
+	public void newChatMessage(String string) {
+		ChatPanel.addMessage(string);
+	}
+
+	public void setPanels(GameBoardPanel g,
+			GameStatusPanel s, ActivePlayerPanel a,
+			OtherPlayerPanel o, ChatPanel c, MainGamePanel m) {
+		this.ActivePlayer = a;
+		this.GameBoard = g;
+		this.OtherPlayers = o;
+		this.ChatPanel = c;
+		this.StateOfGamePanel = s;
+		this.MainGamePanel = m;
+		
+		
+	}
+
+	public void startTrade(int activePlayerNum) {
+		MainGamePanel.setVisible(false);
+		tFrame = new JFrame("Trade Window");
+		TradeWindow tPanel = new TradeWindow(activePlayerNum, this);
+		tFrame.setBounds(100, 100, 900, 750);
+		tFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		tFrame.add(tPanel);
+		tFrame.setVisible(true);
+		
+	}
+	
+	public void endTrade(){
+		tFrame.dispose();
+		tFrame = null;
+		MainGamePanel.setVisible(true);
+	}
+	
 }
