@@ -289,11 +289,9 @@ public class ActivePlayerPanel extends JPanel {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			String source = e.getActionCommand();
-			switch(source){
-			case "trade":
+			if(source.equals("trade")){
 				gl.newChatMessage("System: Player " + gl.getActivePlayer() + " would like a trade.");
 				gl.startTrade(activePlayerNum);
-				break;
 			
 			
 			}

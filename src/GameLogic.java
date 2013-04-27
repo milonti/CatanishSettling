@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Hashtable;
+import java.util.Random;
 
 import javax.swing.JFrame;
 
@@ -23,7 +24,8 @@ public class GameLogic {
 	
 	String activePlayer = null;
 	
-	ArrayList<String> playerList;
+	ArrayList<String> playerList,loseR,winR;
+	HashMap<String, ArrayList<String>> aiResponses;
 	
 	
 	ArrayList<Integer> hexRolls;
@@ -41,6 +43,13 @@ public class GameLogic {
 		road = new ArrayList<GamePiece>();
 		verts = new ArrayList<GamePiece>(54);
 		
+		playerList = new ArrayList<String>();
+		loseR = new ArrayList<String>();
+		winR = new ArrayList<String>();
+		aiResponses= new HashMap<String, ArrayList<String>>();
+
+		
+		activePlayer = "woot";
 		
 		hexRolls = new ArrayList<Integer>();
 		hexRolls.add(11);
@@ -257,6 +266,13 @@ public class GameLogic {
 		ChatPanel = null;
 		StateOfGamePanel = null;
 		
+		loseR.add("gg");
+		loseR.add("well played");
+		winR.add("gg no re");
+		aiResponses.put("lose", loseR);//when to check for this?
+		aiResponses.put("win", winR);//continue for other responses
+		//appropriateResponse, so gamelogic.aiResponses("win")
+		
 		
 		
 		
@@ -265,6 +281,20 @@ public class GameLogic {
 
 	public String getActivePlayer() {
 		return activePlayer;
+	}
+	
+	public void appropriateResponse(String key,String sendingAI)
+	{
+		//random chance to do or not do goes here
+		//zipp wants to
+		if(true)
+		{
+			//pick a random response based on key here
+			String response=aiResponses.get(key).get(0);//change the get(0) to random number from 0 to arraylistlength-1
+			newChatMessage(sendingAI+": "+response);
+			//crap, needs to write to chat
+		}
+		
 	}
 
 	public void newChatMessage(String string) {
@@ -299,6 +329,14 @@ public class GameLogic {
 		tFrame.dispose();
 		tFrame = null;
 		MainGamePanel.setVisible(true);
+	}
+
+	/**
+	 * Method to send a trade request to an AI player
+	 */
+	public void sendTrade() {
+		// TODO Auto-generated method stub
+		
 	}
 	
 }
