@@ -30,6 +30,7 @@ public class GameLogic {
 	ArrayList<Resource> resDistr;
 	ArrayList<Resource> portOrder;
 	ArrayList<Vertex> SClocs;
+	ArrayList<Edge> edges;
 	
 	
 	public GameLogic(){
@@ -166,6 +167,90 @@ public class GameLogic {
 		SClocs.add(new Vertex(17, -2-5, -1));
 		SClocs.add(new Vertex(18, -1, -1));
 		
+		edges = new ArrayList<Edge>();
+		edges.add(new Edge(0,3)); // /
+		edges.add(new Edge(0,4)); // \
+		edges.add(new Edge(1,4)); // /
+		edges.add(new Edge(1,5)); // \
+		edges.add(new Edge(2,5)); // /
+		edges.add(new Edge(2,6)); // \
+
+		edges.add(new Edge(3,7)); // |
+		edges.add(new Edge(4,8)); // |
+		edges.add(new Edge(5,9)); // |
+		edges.add(new Edge(6,10)); // |
+
+		edges.add(new Edge(7,11)); // /
+		edges.add(new Edge(7,12)); // \
+		edges.add(new Edge(8,12)); // /
+		edges.add(new Edge(8,13)); // \
+		edges.add(new Edge(9,13)); // /
+		edges.add(new Edge(9,14)); // \
+		edges.add(new Edge(10,14)); // /
+		edges.add(new Edge(10,15)); // \
+
+		edges.add(new Edge(11,16)); // |
+		edges.add(new Edge(12,17)); // |
+		edges.add(new Edge(13,18)); // |
+		edges.add(new Edge(14,19)); // |
+		edges.add(new Edge(15,20)); // |
+
+		edges.add(new Edge(16,21)); // /
+		edges.add(new Edge(16,22)); // \
+		edges.add(new Edge(17,22)); // /
+		edges.add(new Edge(17,23)); // \
+		edges.add(new Edge(18,23)); // /
+		edges.add(new Edge(18,24)); // \
+		edges.add(new Edge(19,24)); // /
+		edges.add(new Edge(19,25)); // \
+		edges.add(new Edge(20,25)); // /
+		edges.add(new Edge(20,26)); // \
+
+		edges.add(new Edge(21,27)); // |
+		edges.add(new Edge(22,28)); // |
+		edges.add(new Edge(23,29)); // |
+		edges.add(new Edge(24,30)); // |
+		edges.add(new Edge(25,31)); // |
+		edges.add(new Edge(26,32)); // |
+
+		edges.add(new Edge(27,33)); // \
+		edges.add(new Edge(28,33)); // /
+		edges.add(new Edge(28,34)); // \
+		edges.add(new Edge(29,34)); // /
+		edges.add(new Edge(29,35)); // \
+		edges.add(new Edge(30,35)); // /
+		edges.add(new Edge(30,36)); // \
+		edges.add(new Edge(31,36)); // /
+		edges.add(new Edge(31,37)); // \
+		edges.add(new Edge(32,37)); // /
+
+		edges.add(new Edge(33,38)); // |
+		edges.add(new Edge(34,39)); // |
+		edges.add(new Edge(35,40)); // |
+		edges.add(new Edge(36,41)); // |
+		edges.add(new Edge(37,42)); // |
+
+		edges.add(new Edge(38,43)); // \
+		edges.add(new Edge(39,43)); // /
+		edges.add(new Edge(39,44)); // \
+		edges.add(new Edge(40,44)); // /
+		edges.add(new Edge(40,45)); // \
+		edges.add(new Edge(41,45)); // /
+		edges.add(new Edge(41,46)); // \
+		edges.add(new Edge(42,46)); // /
+
+		edges.add(new Edge(43,47)); // |
+		edges.add(new Edge(44,48)); // |
+		edges.add(new Edge(45,49)); // |
+		edges.add(new Edge(46,50)); // |
+
+		edges.add(new Edge(47,51)); // \
+		edges.add(new Edge(48,51)); // /
+		edges.add(new Edge(48,52)); // \
+		edges.add(new Edge(49,52)); // /
+		edges.add(new Edge(49,53)); // \
+		edges.add(new Edge(50,53)); // /
+
 		ActivePlayer = null;
 		GameBoard = null;
 		OtherPlayers = null;
