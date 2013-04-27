@@ -69,7 +69,7 @@ public class GameLogic {
 		resDistr.add(new Resource("wood"));
 		resDistr.add(new Resource("wheat"));
 		resDistr.add(new Resource("brick"));
-		resDistr.add(new Resource("ore"));
+		resDistr.add(new Resource("iron"));
 		resDistr.add(new Resource("brick"));
 		resDistr.add(new Resource("wood"));
 		resDistr.add(new Resource("desert"));
@@ -80,8 +80,8 @@ public class GameLogic {
 		resDistr.add(new Resource("brick"));
 		resDistr.add(new Resource("wood"));
 		resDistr.add(new Resource("wood"));
-		resDistr.add(new Resource("ore"));
-		resDistr.add(new Resource("ore"));
+		resDistr.add(new Resource("iron"));
+		resDistr.add(new Resource("iron"));
 		resDistr.add(new Resource("wheat"));
 		resDistr.add(new Resource("sheep"));
 		
@@ -95,7 +95,7 @@ public class GameLogic {
 		portOrder.add(new Resource("wood"));
 		portOrder.add(new Resource("any"));
 		portOrder.add(new Resource("wheat"));
-		portOrder.add(new Resource("ore"));
+		portOrder.add(new Resource("iron"));
 		
 		SClocs = new ArrayList<Vertex>();
 		// ordered from left to right, top to bottom.
