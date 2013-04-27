@@ -10,11 +10,13 @@ import java.awt.Color;
 
 
 public class MainGamePanel extends JPanel {
-	private JPanel ActivePlayer;
+	private ActivePlayerPanel ActivePlayer;
 	private GameBoardPanel GameBoard;
 	private OtherPlayerPanel OtherPlayers;
 	private ChatPanel ChatPanel;
-	private JPanel StateOfGamePanel;
+	
+	
+	private GameStatusPanel StateOfGamePanel;
 	private GameLogic gl;
 	private SpringLayout layout;
 	public MainGamePanel() {
@@ -40,7 +42,7 @@ public class MainGamePanel extends JPanel {
 		layout.putConstraint(SpringLayout.EAST, OtherPlayers, 155, SpringLayout.WEST, this);
 		add(OtherPlayers);
 		
-		ActivePlayer = new JPanel();
+		ActivePlayer = new ActivePlayerPanel(gl);
 		ActivePlayer.setBackground(Color.YELLOW);
 		layout.putConstraint(SpringLayout.NORTH, ActivePlayer, 5, SpringLayout.NORTH, this);
 		layout.putConstraint(SpringLayout.SOUTH, ActivePlayer, -5, SpringLayout.NORTH, ChatPanel);
@@ -49,7 +51,7 @@ public class MainGamePanel extends JPanel {
 		add(ActivePlayer);
 		
 
-		StateOfGamePanel = new JPanel();
+		StateOfGamePanel = new GameStatusPanel(gl);
 		StateOfGamePanel.setBackground(Color.BLACK);
 		layout.putConstraint(SpringLayout.WEST, StateOfGamePanel, 5, SpringLayout.EAST, OtherPlayers);
 		layout.putConstraint(SpringLayout.SOUTH, StateOfGamePanel, 100, SpringLayout.NORTH, this);
