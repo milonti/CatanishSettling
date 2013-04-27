@@ -26,7 +26,7 @@ public class Resource {
 		if (typeName=="brick") this.type=1;
 		if (typeName=="wheat") this.type=2;
 		if (typeName=="sheep") this.type=3;
-		if (typeName=="ore") this.type=4;
+		if (typeName=="iron") this.type=4;
 		if (typeName=="desert") this.type=5;
 		if (typeName=="sea") this.type=6;
 	}
@@ -56,7 +56,7 @@ public class Resource {
 		case 1: return "B";
 		case 2: return "W";
 		case 3: return "S";
-		case 4: return "O";
+		case 4: return "I";
 		default: return "";
 		}
 	}
