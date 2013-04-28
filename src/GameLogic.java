@@ -1,3 +1,4 @@
+import java.awt.Color;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Hashtable;
@@ -50,10 +51,17 @@ public class GameLogic {
 		winR = new ArrayList<String>();
 		aiResponses= new HashMap<String, ArrayList<String>>();
 
+		//Hard coding players in interest of getting stuff done
 		playerList.add(new Player("Shamino", "mylittlepony"));
 		playerList.add(new Player("YOLO", "yourmom"));
 		playerList.add(new Player("Kurios", "coonapp"));
-		playerList.add(new Player("Ghandi", "nukeseverywhere"));		
+		playerList.add(new Player("Ghandi", "nukeseverywhere"));
+		
+		
+		playerList.get(0).color = new Color(255, 128, 0); // Player 1 = Orange
+		playerList.get(1).color = new Color(128, 0, 255); // Player 2 = Purple
+		playerList.get(2).color = new Color(0, 255, 255); // Player 3 = Cyan
+		playerList.get(3).color = new Color(102, 51,  0); // Player 4 = Brown
 		
 		activeP = playerList.get(0);
 				
@@ -329,8 +337,16 @@ public class GameLogic {
 		
 	}
 	
-	public void startAiTrade(int aiPlayerNum){
+	public void startAiTrade(int aiPlayerNum, int[] offers){
+		MainGamePanel.setVisible(false);
+		tFrame = new JFrame("Trade Window");
+		TradeWindow tPanel = new TradeWindow(aiPlayerNum, this);
+		tPanel.aiOffer(aiPlayerNum, offers);
 		
+		tFrame.setBounds(100, 100, 500, 400);
+		tFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		tFrame.add(tPanel);
+		tFrame.setVisible(true);
 	}
 	
 	public void endTrade(){

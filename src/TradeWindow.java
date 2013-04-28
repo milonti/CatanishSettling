@@ -222,7 +222,7 @@ public class TradeWindow extends JPanel {
 		layout.putConstraint(SpringLayout.WEST, actPlayLockOff, 25, SpringLayout.EAST, actPlayPass);
 		add(actPlayLockOff);
 		
-		lblP1Offer = new JLabel(p1.name + " Offers:");
+		lblP1Offer = new JLabel(p1.name + " Proposes:");
 		layout.putConstraint(SpringLayout.NORTH, lblP1Offer, 10, SpringLayout.SOUTH, lblPassword);
 		lblP1Offer.setFont(new Font("Tahoma", Font.BOLD, 12));
 		layout.putConstraint(SpringLayout.WEST, lblP1Offer, 10, SpringLayout.WEST, this);
@@ -323,7 +323,7 @@ public class TradeWindow extends JPanel {
 		layout.putConstraint(SpringLayout.WEST, P1PlayLockOff, 25, SpringLayout.EAST, P1PlayPass);
 		add(P1PlayLockOff);
 		
-		lblP2Offer = new JLabel(p2.name + " Offers:");
+		lblP2Offer = new JLabel(p2.name + " Proposes:");
 		layout.putConstraint(SpringLayout.NORTH, lblP2Offer, 10, SpringLayout.SOUTH, lblP1Password);
 		lblP2Offer.setFont(new Font("Tahoma", Font.BOLD, 12));
 		layout.putConstraint(SpringLayout.WEST, lblP2Offer, 10, SpringLayout.WEST, this);
@@ -424,7 +424,7 @@ public class TradeWindow extends JPanel {
 		layout.putConstraint(SpringLayout.WEST, P2PlayLockOff, 25, SpringLayout.EAST, P2PlayPass);
 		add(P2PlayLockOff);
 		
-		lblP3Offer = new JLabel(p3.name + " Offers:");
+		lblP3Offer = new JLabel(p3.name + " Proposes:");
 		layout.putConstraint(SpringLayout.NORTH, lblP3Offer, 10, SpringLayout.SOUTH, lblP2Password);
 		lblP3Offer.setFont(new Font("Tahoma", Font.BOLD, 12));
 		layout.putConstraint(SpringLayout.WEST, lblP3Offer, 10, SpringLayout.WEST, this);
@@ -556,10 +556,6 @@ public class TradeWindow extends JPanel {
 		
 		activeLocked = false;
 		
-		actPass = "woot";
-		p1Pass = "toot";
-		p2Pass = "loot";
-		p3Pass = "boot";
 		
 		actPlayLockOff.addActionListener(new lockListener());
 		actPlayLockOff.setActionCommand("activeLock");
@@ -577,6 +573,7 @@ public class TradeWindow extends JPanel {
 		layout.putConstraint(SpringLayout.WEST, btnP1Acc, 0, SpringLayout.WEST, textActSheep);
 		add(btnP1Acc);
 		btnP1Acc.addActionListener(new tradeListener());
+		btnP1Acc.setActionCommand("1");
 		
 		btnP2Acc = new JButton("Accept Offer");
 		layout.putConstraint(SpringLayout.NORTH, btnP2Acc, 0, SpringLayout.NORTH, P2PlayLockOff);
@@ -584,6 +581,7 @@ public class TradeWindow extends JPanel {
 		btnP2Acc.setEnabled(false);
 		add(btnP2Acc);
 		btnP2Acc.addActionListener(new tradeListener());
+		btnP2Acc.setActionCommand("2");
 		
 		btnP3Acc = new JButton("Accept Offer");
 		btnP3Acc.setEnabled(false);
@@ -591,6 +589,7 @@ public class TradeWindow extends JPanel {
 		layout.putConstraint(SpringLayout.WEST, btnP3Acc, 0, SpringLayout.WEST, btnP2Acc);
 		add(btnP3Acc);
 		btnP3Acc.addActionListener(new tradeListener());
+		btnP3Acc.setActionCommand("3");
 		
 		btnEndTrading = new JButton("End Trading");
 		layout.putConstraint(SpringLayout.NORTH, btnEndTrading, 0, SpringLayout.NORTH, actPlayLockOff);
@@ -652,6 +651,50 @@ public class TradeWindow extends JPanel {
 			if(!(wheat <= p3.getWheat())) return false;
 		}
 		return true;
+	}
+	
+	/**
+	 * 
+	 * @param aiNum
+	 * @param offers Length 5 array in the order lumber, brick, iron, sheep, wheat
+	 */
+	public void aiOffer(int aiNum, int[] offers){
+		if(active.equals(gl.playerList.get(aiNum))){
+			textActLumb.setText("" + offers[0]);
+			textActBrick.setText("" + offers[1]);
+			textActIron.setText("" + offers[2]);
+			textActSheep.setText("" + offers[3]);
+			textActWheat.setText("" + offers[4]);
+			actPlayPass.setText(active.password);
+			actPlayLockOff.getActionListeners()[0].actionPerformed(new ActionEvent(actPlayLockOff, ActionEvent.ACTION_PERFORMED, "activeLock"));
+		}
+		else if(p1.equals(gl.playerList.get(aiNum))){
+			textP1Lumb.setText("" + offers[0]);
+			textP1Brick.setText("" + offers[1]);
+			textP1Iron.setText("" + offers[2]);
+			textP1Sheep.setText("" + offers[3]);
+			textP1Wheat.setText("" + offers[4]);
+			P1PlayPass.setText(p1.password);
+			P1PlayLockOff.getActionListeners()[0].actionPerformed(new ActionEvent(P1PlayLockOff, ActionEvent.ACTION_PERFORMED, "p1Lock"));
+		}
+		else if(p2.equals(gl.playerList.get(aiNum))){
+			textP2Lumb.setText("" + offers[0]);
+			textP2Brick.setText("" + offers[1]);
+			textP2Iron.setText("" + offers[2]);
+			textP2Sheep.setText("" + offers[3]);
+			textP2Wheat.setText("" + offers[4]);
+			P2PlayPass.setText(p2.password);
+			P2PlayLockOff.getActionListeners()[0].actionPerformed(new ActionEvent(P2PlayLockOff, ActionEvent.ACTION_PERFORMED, "p2Lock"));
+		}
+		else if(p3.equals(gl.playerList.get(aiNum))){
+			textP3Lumb.setText("" + offers[0]);
+			textP3Brick.setText("" + offers[1]);
+			textP3Iron.setText("" + offers[2]);
+			textP3Sheep.setText("" + offers[3]);
+			textP3Wheat.setText("" + offers[4]);
+			P3PlayPass.setText(p3.password);
+			P3PlayLockOff.getActionListeners()[0].actionPerformed(new ActionEvent(P3PlayLockOff, ActionEvent.ACTION_PERFORMED, "p3Lock"));
+		}
 	}
 	
 	class lockListener implements ActionListener{

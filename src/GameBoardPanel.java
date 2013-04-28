@@ -210,6 +210,10 @@ public class GameBoardPanel extends JPanel {
 		g.drawString(" "+portOrder.get(6).toPortString(), 301 - 1*b, 168 + 5*(a+c));
 		g.drawString(" "+portOrder.get(7).toPortString(), 301 - 3*b, 168 + 3*(a+c));
 		g.drawString(" "+portOrder.get(8).toPortString(), 301 - 3*b, 168 + 1*(a+c));
+		
+		
+		
+		
 	}
 	
 	public Polygon makeHex(int x, int y){
@@ -225,10 +229,447 @@ public class GameBoardPanel extends JPanel {
 	}
 	
 	public void drawRoad(int player, int location, Graphics g){
-		//make polygon
-		//set color via player
-		//giant switch statement
-		//do this in game piece instead
+		Color col = gl.playerList.get(player).color;
+		Polygon road = new Polygon();
+		switch(location){
+		case 0:
+			road.addPoint(277, 134);
+			road.addPoint(307, 117);
+			road.addPoint(311, 124);
+			road.addPoint(281, 141);
+			break;
+		case 1:
+			road.addPoint(313, 124);
+			road.addPoint(317, 117);
+			road.addPoint(347, 134);
+			road.addPoint(343, 141);
+			break;
+		case 2:
+			road.addPoint(277 + 2*b, 134);
+			road.addPoint(307 + 2*b, 117);
+			road.addPoint(311 + 2*b, 124);
+			road.addPoint(281 + 2*b, 141);
+			break;
+		case 3:
+			road.addPoint(313 + 2*b, 124);
+			road.addPoint(317 + 2*b, 117);
+			road.addPoint(347 + 2*b, 134);
+			road.addPoint(343 + 2*b, 141);
+			break;
+		case 4:
+			road.addPoint(277 + 4*b, 134);
+			road.addPoint(307 + 4*b, 117);
+			road.addPoint(311 + 4*b, 124);
+			road.addPoint(281 + 4*b, 141);
+			break;
+		case 5:
+			road.addPoint(313 + 4*b, 124);
+			road.addPoint(317 + 4*b, 117);
+			road.addPoint(347 + 4*b, 134);
+			road.addPoint(343 + 4*b, 141);
+			break;
+		case 6:
+			road.addPoint(278 + 0*b, 144);
+			road.addPoint(278 + 0*b, 180);
+			road.addPoint(270 + 0*b, 180);
+			road.addPoint(270 + 0*b, 144);
+			break;
+		case 7:
+			road.addPoint(278 + 2*b, 144);
+			road.addPoint(278 + 2*b, 180);
+			road.addPoint(270 + 2*b, 180);
+			road.addPoint(270 + 2*b, 144);
+			break;
+		case 8:
+			road.addPoint(278 + 4*b, 144);
+			road.addPoint(278 + 4*b, 180);
+			road.addPoint(270 + 4*b, 180);
+			road.addPoint(270 + 4*b, 144);
+			break;
+		case 9:
+			road.addPoint(278 + 6*b, 144);
+			road.addPoint(278 + 6*b, 180);
+			road.addPoint(270 + 6*b, 180);
+			road.addPoint(270 + 6*b, 144);
+			break;
+		case 10:
+			road.addPoint(277 + -1*b, 134 + 1*(a+c));
+			road.addPoint(307 + -1*b, 117 + 1*(a+c));
+			road.addPoint(311 + -1*b, 124 + 1*(a+c));
+			road.addPoint(281 + -1*b, 141 + 1*(a+c));
+			break;
+		case 11:
+			road.addPoint(313 + -1*b, 124 + 1*(a+c));
+			road.addPoint(317 + -1*b, 117 + 1*(a+c));
+			road.addPoint(347 + -1*b, 134 + 1*(a+c));
+			road.addPoint(343 + -1*b, 141 + 1*(a+c));
+			break;
+		case 12:
+			road.addPoint(277 + 1*b, 134 + 1*(a+c));
+			road.addPoint(307 + 1*b, 117 + 1*(a+c));
+			road.addPoint(311 + 1*b, 124 + 1*(a+c));
+			road.addPoint(281 + 1*b, 141 + 1*(a+c));
+			break;
+		case 13:
+			road.addPoint(313 + 1*b, 124 + 1*(a+c));
+			road.addPoint(317 + 1*b, 117 + 1*(a+c));
+			road.addPoint(347 + 1*b, 134 + 1*(a+c));
+			road.addPoint(343 + 1*b, 141 + 1*(a+c));
+			break;
+		case 14:
+			road.addPoint(277 + 3*b, 134 + 1*(a+c));
+			road.addPoint(307 + 3*b, 117 + 1*(a+c));
+			road.addPoint(311 + 3*b, 124 + 1*(a+c));
+			road.addPoint(281 + 3*b, 141 + 1*(a+c));
+			break;
+		case 15:
+			road.addPoint(313 + 3*b, 124 + 1*(a+c));
+			road.addPoint(317 + 3*b, 117 + 1*(a+c));
+			road.addPoint(347 + 3*b, 134 + 1*(a+c));
+			road.addPoint(343 + 3*b, 141 + 1*(a+c));
+			break;
+		case 16:
+			road.addPoint(277 + 5*b, 134 + 1*(a+c));
+			road.addPoint(307 + 5*b, 117 + 1*(a+c));
+			road.addPoint(311 + 5*b, 124 + 1*(a+c));
+			road.addPoint(281 + 5*b, 141 + 1*(a+c));
+			break;
+		case 17:
+			road.addPoint(313 + 5*b, 124 + 1*(a+c));
+			road.addPoint(317 + 5*b, 117 + 1*(a+c));
+			road.addPoint(347 + 5*b, 134 + 1*(a+c));
+			road.addPoint(343 + 5*b, 141 + 1*(a+c));
+			break;
+		case 18:
+			road.addPoint(278 + -1*b, 144 + 1*(a+c));
+			road.addPoint(278 + -1*b, 180 + 1*(a+c));
+			road.addPoint(270 + -1*b, 180 + 1*(a+c));
+			road.addPoint(270 + -1*b, 144 + 1*(a+c));
+			break;
+		case 19:
+			road.addPoint(278 + 1*b, 144 + 1*(a+c));
+			road.addPoint(278 + 1*b, 180 + 1*(a+c));
+			road.addPoint(270 + 1*b, 180 + 1*(a+c));
+			road.addPoint(270 + 1*b, 144 + 1*(a+c));
+			break;
+		case 20:
+			road.addPoint(278 + 3*b, 144 + 1*(a+c));
+			road.addPoint(278 + 3*b, 180 + 1*(a+c));
+			road.addPoint(270 + 3*b, 180 + 1*(a+c));
+			road.addPoint(270 + 3*b, 144 + 1*(a+c));
+			break;
+		case 21:
+			road.addPoint(278 + 5*b, 144 + 1*(a+c));
+			road.addPoint(278 + 5*b, 180 + 1*(a+c));
+			road.addPoint(270 + 5*b, 180 + 1*(a+c));
+			road.addPoint(270 + 5*b, 144 + 1*(a+c));
+			break;
+		case 22:
+			road.addPoint(278 + 7*b, 144 + 1*(a+c));
+			road.addPoint(278 + 7*b, 180 + 1*(a+c));
+			road.addPoint(270 + 7*b, 180 + 1*(a+c));
+			road.addPoint(270 + 7*b, 144 + 1*(a+c));
+			break;
+		case 23:
+			road.addPoint(277 + -2*b, 134 + 2*(a+c));
+			road.addPoint(307 + -2*b, 117 + 2*(a+c));
+			road.addPoint(311 + -2*b, 124 + 2*(a+c));
+			road.addPoint(281 + -2*b, 141 + 2*(a+c));
+			break;
+		case 24:
+			road.addPoint(313 + -2*b, 124 + 2*(a+c));
+			road.addPoint(317 + -2*b, 117 + 2*(a+c));
+			road.addPoint(347 + -2*b, 134 + 2*(a+c));
+			road.addPoint(343 + -2*b, 141 + 2*(a+c));
+			break;
+		case 25:
+			road.addPoint(277 + 0*b, 134 + 2*(a+c));
+			road.addPoint(307 + 0*b, 117 + 2*(a+c));
+			road.addPoint(311 + 0*b, 124 + 2*(a+c));
+			road.addPoint(281 + 0*b, 141 + 2*(a+c));
+			break;
+		case 26:
+			road.addPoint(313 + 0*b, 124 + 2*(a+c));
+			road.addPoint(317 + 0*b, 117 + 2*(a+c));
+			road.addPoint(347 + 0*b, 134 + 2*(a+c));
+			road.addPoint(343 + 0*b, 141 + 2*(a+c));
+			break;
+		case 27:
+			road.addPoint(277 + 2*b, 134 + 2*(a+c));
+			road.addPoint(307 + 2*b, 117 + 2*(a+c));
+			road.addPoint(311 + 2*b, 124 + 2*(a+c));
+			road.addPoint(281 + 2*b, 141 + 2*(a+c));
+			break;
+		case 28:
+			road.addPoint(313 + 2*b, 124 + 2*(a+c));
+			road.addPoint(317 + 2*b, 117 + 2*(a+c));
+			road.addPoint(347 + 2*b, 134 + 2*(a+c));
+			road.addPoint(343 + 2*b, 141 + 2*(a+c));
+			break;
+		case 29:
+			road.addPoint(277 + 4*b, 134 + 2*(a+c));
+			road.addPoint(307 + 4*b, 117 + 2*(a+c));
+			road.addPoint(311 + 4*b, 124 + 2*(a+c));
+			road.addPoint(281 + 4*b, 141 + 2*(a+c));
+			break;
+		case 30:
+			road.addPoint(313 + 4*b, 124 + 2*(a+c));
+			road.addPoint(317 + 4*b, 117 + 2*(a+c));
+			road.addPoint(347 + 4*b, 134 + 2*(a+c));
+			road.addPoint(343 + 4*b, 141 + 2*(a+c));
+			break;
+		case 31:
+			road.addPoint(277 + 6*b, 134 + 2*(a+c));
+			road.addPoint(307 + 6*b, 117 + 2*(a+c));
+			road.addPoint(311 + 6*b, 124 + 2*(a+c));
+			road.addPoint(281 + 6*b, 141 + 2*(a+c));
+			break;
+		case 32:
+			road.addPoint(313 + 6*b, 124 + 2*(a+c));
+			road.addPoint(317 + 6*b, 117 + 2*(a+c));
+			road.addPoint(347 + 6*b, 134 + 2*(a+c));
+			road.addPoint(343 + 6*b, 141 + 2*(a+c));
+			break;
+		case 33:
+			road.addPoint(278 + -2*b, 144 + 2*(a+c));
+			road.addPoint(278 + -2*b, 180 + 2*(a+c));
+			road.addPoint(270 + -2*b, 180 + 2*(a+c));
+			road.addPoint(270 + -2*b, 144 + 2*(a+c));
+			break;
+		case 34:
+			road.addPoint(278 + 0*b, 144 + 2*(a+c));
+			road.addPoint(278 + 0*b, 180 + 2*(a+c));
+			road.addPoint(270 + 0*b, 180 + 2*(a+c));
+			road.addPoint(270 + 0*b, 144 + 2*(a+c));
+			break;
+		case 35:
+			road.addPoint(278 + 2*b, 144 + 2*(a+c));
+			road.addPoint(278 + 2*b, 180 + 2*(a+c));
+			road.addPoint(270 + 2*b, 180 + 2*(a+c));
+			road.addPoint(270 + 2*b, 144 + 2*(a+c));
+			break;
+		case 36:
+			road.addPoint(278 + 4*b, 144 + 2*(a+c));
+			road.addPoint(278 + 4*b, 180 + 2*(a+c));
+			road.addPoint(270 + 4*b, 180 + 2*(a+c));
+			road.addPoint(270 + 4*b, 144 + 2*(a+c));
+			break;
+		case 37:
+			road.addPoint(278 + 6*b, 144 + 2*(a+c));
+			road.addPoint(278 + 6*b, 180 + 2*(a+c));
+			road.addPoint(270 + 6*b, 180 + 2*(a+c));
+			road.addPoint(270 + 6*b, 144 + 2*(a+c));
+			break;
+		case 38:
+			road.addPoint(278 + 6*b, 144 + 4*(a+c));
+			road.addPoint(278 + 6*b, 180 + 4*(a+c));
+			road.addPoint(270 + 6*b, 180 + 4*(a+c));
+			road.addPoint(270 + 6*b, 144 + 4*(a+c));
+			break;
+		case 39:
+			road.addPoint(313 + -3*b, 124 + 3*(a+c));
+			road.addPoint(317 + -3*b, 117 + 3*(a+c));
+			road.addPoint(347 + -3*b, 134 + 3*(a+c));
+			road.addPoint(343 + -3*b, 141 + 3*(a+c));
+			break;
+		case 40:
+			road.addPoint(277 + -1*b, 134 + 3*(a+c));
+			road.addPoint(307 + -1*b, 117 + 3*(a+c));
+			road.addPoint(311 + -1*b, 124 + 3*(a+c));
+			road.addPoint(281 + -1*b, 141 + 3*(a+c));
+			break;
+		case 41:
+			road.addPoint(313 + -1*b, 124 + 3*(a+c));
+			road.addPoint(317 + -1*b, 117 + 3*(a+c));
+			road.addPoint(347 + -1*b, 134 + 3*(a+c));
+			road.addPoint(343 + -1*b, 141 + 3*(a+c));
+			break;
+		case 42:
+			road.addPoint(277 + 1*b, 134 + 3*(a+c));
+			road.addPoint(307 + 1*b, 117 + 3*(a+c));
+			road.addPoint(311 + 1*b, 124 + 3*(a+c));
+			road.addPoint(281 + 1*b, 141 + 3*(a+c));
+			break;
+		case 43:
+			road.addPoint(313 + 1*b, 124 + 3*(a+c));
+			road.addPoint(317 + 1*b, 117 + 3*(a+c));
+			road.addPoint(347 + 1*b, 134 + 3*(a+c));
+			road.addPoint(343 + 1*b, 141 + 3*(a+c));
+			break;
+		case 44:
+			road.addPoint(277 + 3*b, 134 + 3*(a+c));
+			road.addPoint(307 + 3*b, 117 + 3*(a+c));
+			road.addPoint(311 + 3*b, 124 + 3*(a+c));
+			road.addPoint(281 + 3*b, 141 + 3*(a+c));
+			break;
+		case 45:
+			road.addPoint(313 + 3*b, 124 + 3*(a+c));
+			road.addPoint(317 + 3*b, 117 + 3*(a+c));
+			road.addPoint(347 + 3*b, 134 + 3*(a+c));
+			road.addPoint(343 + 3*b, 141 + 3*(a+c));
+			break;
+		case 46:
+			road.addPoint(277 + 5*b, 134 + 3*(a+c));
+			road.addPoint(307 + 5*b, 117 + 3*(a+c));
+			road.addPoint(311 + 5*b, 124 + 3*(a+c));
+			road.addPoint(281 + 5*b, 141 + 3*(a+c));
+			break;
+		case 47:
+			road.addPoint(313 + 5*b, 124 + 3*(a+c));
+			road.addPoint(317 + 5*b, 117 + 3*(a+c));
+			road.addPoint(347 + 5*b, 134 + 3*(a+c));
+			road.addPoint(343 + 5*b, 141 + 3*(a+c));
+			break;
+		case 48:
+			road.addPoint(277 + 7*b, 134 + 3*(a+c));
+			road.addPoint(307 + 7*b, 117 + 3*(a+c));
+			road.addPoint(311 + 7*b, 124 + 3*(a+c));
+			road.addPoint(281 + 7*b, 141 + 3*(a+c));
+			break;
+		case 49:
+			road.addPoint(278 + -1*b, 144 + 3*(a+c));
+			road.addPoint(278 + -1*b, 180 + 3*(a+c));
+			road.addPoint(270 + -1*b, 180 + 3*(a+c));
+			road.addPoint(270 + -1*b, 144 + 3*(a+c));
+			break;
+		case 50:
+			road.addPoint(278 + 1*b, 144 + 3*(a+c));
+			road.addPoint(278 + 1*b, 180 + 3*(a+c));
+			road.addPoint(270 + 1*b, 180 + 3*(a+c));
+			road.addPoint(270 + 1*b, 144 + 3*(a+c));
+			break;
+		case 51:
+			road.addPoint(278 + 3*b, 144 + 3*(a+c));
+			road.addPoint(278 + 3*b, 180 + 3*(a+c));
+			road.addPoint(270 + 3*b, 180 + 3*(a+c));
+			road.addPoint(270 + 3*b, 144 + 3*(a+c));
+			break;
+		case 52:
+			road.addPoint(278 + 5*b, 144 + 3*(a+c));
+			road.addPoint(278 + 5*b, 180 + 3*(a+c));
+			road.addPoint(270 + 5*b, 180 + 3*(a+c));
+			road.addPoint(270 + 5*b, 144 + 3*(a+c));
+			break;
+		case 53:
+			road.addPoint(278 + 7*b, 144 + 3*(a+c));
+			road.addPoint(278 + 7*b, 180 + 3*(a+c));
+			road.addPoint(270 + 7*b, 180 + 3*(a+c));
+			road.addPoint(270 + 7*b, 144 + 3*(a+c));
+			break;
+		case 54:
+			road.addPoint(313 + -2*b, 124 + 4*(a+c));
+			road.addPoint(317 + -2*b, 117 + 4*(a+c));
+			road.addPoint(347 + -2*b, 134 + 4*(a+c));
+			road.addPoint(343 + -2*b, 141 + 4*(a+c));
+			break;
+		case 55:
+			road.addPoint(277 + 0*b, 134 + 4*(a+c));
+			road.addPoint(307 + 0*b, 117 + 4*(a+c));
+			road.addPoint(311 + 0*b, 124 + 4*(a+c));
+			road.addPoint(281 + 0*b, 141 + 4*(a+c));
+			break;
+		case 56:
+			road.addPoint(313 + 0*b, 124 + 4*(a+c));
+			road.addPoint(317 + 0*b, 117 + 4*(a+c));
+			road.addPoint(347 + 0*b, 134 + 4*(a+c));
+			road.addPoint(343 + 0*b, 141 + 4*(a+c));
+			break;
+		case 57:
+			road.addPoint(277 + 2*b, 134 + 4*(a+c));
+			road.addPoint(307 + 2*b, 117 + 4*(a+c));
+			road.addPoint(311 + 2*b, 124 + 4*(a+c));
+			road.addPoint(281 + 2*b, 141 + 4*(a+c));
+			break;
+		case 58:
+			road.addPoint(313 + 2*b, 124 + 4*(a+c));
+			road.addPoint(317 + 2*b, 117 + 4*(a+c));
+			road.addPoint(347 + 2*b, 134 + 4*(a+c));
+			road.addPoint(343 + 2*b, 141 + 4*(a+c));
+			break;
+		case 59:
+			road.addPoint(277 + 4*b, 134 + 4*(a+c));
+			road.addPoint(307 + 4*b, 117 + 4*(a+c));
+			road.addPoint(311 + 4*b, 124 + 4*(a+c));
+			road.addPoint(281 + 4*b, 141 + 4*(a+c));
+			break;
+		case 60:
+			road.addPoint(313 + 4*b, 124 + 4*(a+c));
+			road.addPoint(317 + 4*b, 117 + 4*(a+c));
+			road.addPoint(347 + 4*b, 134 + 4*(a+c));
+			road.addPoint(343 + 4*b, 141 + 4*(a+c));
+			break;
+		case 61:
+			road.addPoint(277 + 6*b, 134 + 4*(a+c));
+			road.addPoint(307 + 6*b, 117 + 4*(a+c));
+			road.addPoint(311 + 6*b, 124 + 4*(a+c));
+			road.addPoint(281 + 6*b, 141 + 4*(a+c));
+			break;
+		case 62:
+			road.addPoint(278 + 0*b, 144 + 4*(a+c));
+			road.addPoint(278 + 0*b, 180 + 4*(a+c));
+			road.addPoint(270 + 0*b, 180 + 4*(a+c));
+			road.addPoint(270 + 0*b, 144 + 4*(a+c));
+			break;
+		case 63:
+			road.addPoint(278 + 2*b, 144 + 4*(a+c));
+			road.addPoint(278 + 2*b, 180 + 4*(a+c));
+			road.addPoint(270 + 2*b, 180 + 4*(a+c));
+			road.addPoint(270 + 2*b, 144 + 4*(a+c));
+			break;
+		case 64:
+			road.addPoint(278 + 4*b, 144 + 4*(a+c));
+			road.addPoint(278 + 4*b, 180 + 4*(a+c));
+			road.addPoint(270 + 4*b, 180 + 4*(a+c));
+			road.addPoint(270 + 4*b, 144 + 4*(a+c));
+			break;
+		case 65:
+			road.addPoint(278 + 6*b, 144 + 4*(a+c));
+			road.addPoint(278 + 6*b, 180 + 4*(a+c));
+			road.addPoint(270 + 6*b, 180 + 4*(a+c));
+			road.addPoint(270 + 6*b, 144 + 4*(a+c));
+			break;
+		case 66:
+			road.addPoint(313 + -1*b, 124 + 5*(a+c));
+			road.addPoint(317 + -1*b, 117 + 5*(a+c));
+			road.addPoint(347 + -1*b, 134 + 5*(a+c));
+			road.addPoint(343 + -1*b, 141 + 5*(a+c));
+			break;
+		case 67:
+			road.addPoint(277 + 1*b, 134 + 5*(a+c));
+			road.addPoint(307 + 1*b, 117 + 5*(a+c));
+			road.addPoint(311 + 1*b, 124 + 5*(a+c));
+			road.addPoint(281 + 1*b, 141 + 5*(a+c));
+			break;
+		case 68:
+			road.addPoint(313 + 1*b, 124 + 5*(a+c));
+			road.addPoint(317 + 1*b, 117 + 5*(a+c));
+			road.addPoint(347 + 1*b, 134 + 5*(a+c));
+			road.addPoint(343 + 1*b, 141 + 5*(a+c));
+			break;
+		case 69:
+			road.addPoint(277 + 3*b, 134 + 5*(a+c));
+			road.addPoint(307 + 3*b, 117 + 5*(a+c));
+			road.addPoint(311 + 3*b, 124 + 5*(a+c));
+			road.addPoint(281 + 3*b, 141 + 5*(a+c));
+			break;
+		case 70:
+			road.addPoint(313 + 3*b, 124 + 5*(a+c));
+			road.addPoint(317 + 3*b, 117 + 5*(a+c));
+			road.addPoint(347 + 3*b, 134 + 5*(a+c));
+			road.addPoint(343 + 3*b, 141 + 5*(a+c));
+			break;
+		case 71:
+			road.addPoint(277 + 5*b, 134 + 5*(a+c));
+			road.addPoint(307 + 5*b, 117 + 5*(a+c));
+			road.addPoint(311 + 5*b, 124 + 5*(a+c));
+			road.addPoint(281 + 5*b, 141 + 5*(a+c));
+			break;
+		}
+		g.setColor(col);
+		g.fillPolygon(road);
+		g.setColor(Color.BLACK);
+		g.drawPolygon(road);
+				
 	}
 	
 	

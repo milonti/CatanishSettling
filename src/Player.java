@@ -1,3 +1,4 @@
+import java.awt.Color;
 import java.util.ArrayList;
 
 
@@ -9,6 +10,8 @@ public class Player {
 	int lumber;
 	int sheep;
 	int wheat;
+	
+	Color color;
 	
 	ArrayList<GamePiece> cities;
 
@@ -23,6 +26,7 @@ public class Player {
 		sheep = 0;
 		wheat = 0;
 		cities = new ArrayList<GamePiece>();
+		color = new Color(0, 0, 0);
 		
 	}
 
