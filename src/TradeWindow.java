@@ -87,21 +87,48 @@ public class TradeWindow extends JPanel {
 	public boolean activeLocked;
 	public boolean p1Locked;
 	public boolean p2Locked;
-	
+	public boolean p3Locked;
 	
 	private String actPass;
 	private String p1Pass;
 	private String p2Pass;
 	private String p3Pass;
-	public boolean p3Locked;
+	
+	
+	private Player active;
+	private Player p1;
+	private Player p2;
+	private Player p3;
+	private JButton btnP1Acc;
+	private JButton btnP2Acc;
+	private JButton btnP3Acc;
+	private JButton btnEndTrading;
 	
 	TradeWindow(int playerNum, GameLogic gl){
 		this.gl = gl;
 		this.activePlay = playerNum;
+		
+		active = gl.activeP;
+		p1 = null;
+		p2 = null;
+		p3 = null;
+		
+		for(int i = 0; i < 4; i++){
+			if(i == playerNum) continue;
+			if(p1 == null) p1 = gl.playerList.get(i);
+			else if(p2 == null) p2 = gl.playerList.get(i);
+			else if(p3 == null) p3 = gl.playerList.get(i);
+		}
+		
+		actPass = active.password;
+		p1Pass = p1.password;
+		p2Pass = p2.password;
+		p3Pass = p3.password;
+		
 		layout = new SpringLayout();
 		setLayout(layout);
 		
-		JLabel lblActOffer = new JLabel("Active Player Offers:");
+		JLabel lblActOffer = new JLabel(active.name + " Offers:");
 		lblActOffer.setFont(new Font("Tahoma", Font.BOLD, 12));
 		layout.putConstraint(SpringLayout.NORTH, lblActOffer, 10, SpringLayout.NORTH, this);
 		layout.putConstraint(SpringLayout.WEST, lblActOffer, 10, SpringLayout.WEST, this);
@@ -195,7 +222,7 @@ public class TradeWindow extends JPanel {
 		layout.putConstraint(SpringLayout.WEST, actPlayLockOff, 25, SpringLayout.EAST, actPlayPass);
 		add(actPlayLockOff);
 		
-		lblP1Offer = new JLabel("P1 Offers:");
+		lblP1Offer = new JLabel(p1.name + " Offers:");
 		layout.putConstraint(SpringLayout.NORTH, lblP1Offer, 10, SpringLayout.SOUTH, lblPassword);
 		lblP1Offer.setFont(new Font("Tahoma", Font.BOLD, 12));
 		layout.putConstraint(SpringLayout.WEST, lblP1Offer, 10, SpringLayout.WEST, this);
@@ -209,6 +236,7 @@ public class TradeWindow extends JPanel {
 		add(P1PlaySep);
 		
 		textP1Lumb = new JTextField();
+		textP1Lumb.setEditable(false);
 		textP1Lumb.setHorizontalAlignment(SwingConstants.RIGHT);
 		textP1Lumb.setText("0");
 		layout.putConstraint(SpringLayout.NORTH, textP1Lumb, 6, SpringLayout.SOUTH, P1PlaySep);
@@ -227,6 +255,7 @@ public class TradeWindow extends JPanel {
 		add(lblP1Brick);
 		
 		textP1Brick = new JTextField();
+		textP1Brick.setEditable(false);
 		layout.putConstraint(SpringLayout.WEST, textP1Brick, 10, SpringLayout.EAST, lblP1Brick);
 		textP1Brick.setHorizontalAlignment(SwingConstants.RIGHT);
 		textP1Brick.setText("0");
@@ -240,6 +269,7 @@ public class TradeWindow extends JPanel {
 		add(lblP1Iron);
 		
 		textP1Iron = new JTextField();
+		textP1Iron.setEditable(false);
 		layout.putConstraint(SpringLayout.WEST, textP1Iron, 10, SpringLayout.EAST, lblP1Iron);
 		textP1Iron.setHorizontalAlignment(SwingConstants.RIGHT);
 		textP1Iron.setText("0");
@@ -253,6 +283,7 @@ public class TradeWindow extends JPanel {
 		add(lblP1Sheep);
 		
 		textP1Sheep = new JTextField();
+		textP1Sheep.setEditable(false);
 		layout.putConstraint(SpringLayout.WEST, textP1Sheep, 10, SpringLayout.EAST, lblP1Sheep);
 		textP1Sheep.setHorizontalAlignment(SwingConstants.RIGHT);
 		textP1Sheep.setText("0");
@@ -266,6 +297,7 @@ public class TradeWindow extends JPanel {
 		add(lblP1Wheat);
 		
 		textP1Wheat = new JTextField();
+		textP1Wheat.setEditable(false);
 		layout.putConstraint(SpringLayout.WEST, textP1Wheat, 10, SpringLayout.EAST, lblP1Wheat);
 		textP1Wheat.setHorizontalAlignment(SwingConstants.RIGHT);
 		textP1Wheat.setText("0");
@@ -278,6 +310,7 @@ public class TradeWindow extends JPanel {
 		add(lblP1Password);
 		
 		P1PlayPass = new JPasswordField();
+		P1PlayPass.setEnabled(false);
 		layout.putConstraint(SpringLayout.NORTH, lblP1Password, 3, SpringLayout.NORTH, P1PlayPass);
 		layout.putConstraint(SpringLayout.WEST, P1PlayPass, 25, SpringLayout.EAST, lblP1Password);
 		P1PlayPass.setColumns(8);
@@ -285,11 +318,12 @@ public class TradeWindow extends JPanel {
 		add(P1PlayPass);
 		
 		P1PlayLockOff = new JButton("Lock Offer");
+		P1PlayLockOff.setEnabled(false);
 		layout.putConstraint(SpringLayout.NORTH, P1PlayLockOff, -1, SpringLayout.NORTH, P1PlayPass);
 		layout.putConstraint(SpringLayout.WEST, P1PlayLockOff, 25, SpringLayout.EAST, P1PlayPass);
 		add(P1PlayLockOff);
 		
-		lblP2Offer = new JLabel("P2 Offers:");
+		lblP2Offer = new JLabel(p2.name + " Offers:");
 		layout.putConstraint(SpringLayout.NORTH, lblP2Offer, 10, SpringLayout.SOUTH, lblP1Password);
 		lblP2Offer.setFont(new Font("Tahoma", Font.BOLD, 12));
 		layout.putConstraint(SpringLayout.WEST, lblP2Offer, 10, SpringLayout.WEST, this);
@@ -303,6 +337,7 @@ public class TradeWindow extends JPanel {
 		add(P2PlaySep);
 		
 		textP2Lumb = new JTextField();
+		textP2Lumb.setEditable(false);
 		textP2Lumb.setHorizontalAlignment(SwingConstants.RIGHT);
 		textP2Lumb.setText("0");
 		layout.putConstraint(SpringLayout.NORTH, textP2Lumb, 6, SpringLayout.SOUTH, P2PlaySep);
@@ -321,6 +356,7 @@ public class TradeWindow extends JPanel {
 		add(lblP2Brick);
 		
 		textP2Brick = new JTextField();
+		textP2Brick.setEditable(false);
 		layout.putConstraint(SpringLayout.WEST, textP2Brick, 10, SpringLayout.EAST, lblP2Brick);
 		textP2Brick.setHorizontalAlignment(SwingConstants.RIGHT);
 		textP2Brick.setText("0");
@@ -334,6 +370,7 @@ public class TradeWindow extends JPanel {
 		add(lblP2Iron);
 		
 		textP2Iron = new JTextField();
+		textP2Iron.setEditable(false);
 		layout.putConstraint(SpringLayout.WEST, textP2Iron, 10, SpringLayout.EAST, lblP2Iron);
 		textP2Iron.setHorizontalAlignment(SwingConstants.RIGHT);
 		textP2Iron.setText("0");
@@ -347,6 +384,7 @@ public class TradeWindow extends JPanel {
 		add(lblP2Sheep);
 		
 		textP2Sheep = new JTextField();
+		textP2Sheep.setEditable(false);
 		layout.putConstraint(SpringLayout.WEST, textP2Sheep, 10, SpringLayout.EAST, lblP2Sheep);
 		textP2Sheep.setHorizontalAlignment(SwingConstants.RIGHT);
 		textP2Sheep.setText("0");
@@ -360,6 +398,7 @@ public class TradeWindow extends JPanel {
 		add(lblP2Wheat);
 		
 		textP2Wheat = new JTextField();
+		textP2Wheat.setEditable(false);
 		layout.putConstraint(SpringLayout.WEST, textP2Wheat, 10, SpringLayout.EAST, lblP2Wheat);
 		textP2Wheat.setHorizontalAlignment(SwingConstants.RIGHT);
 		textP2Wheat.setText("0");
@@ -372,6 +411,7 @@ public class TradeWindow extends JPanel {
 		add(lblP2Password);
 		
 		P2PlayPass = new JPasswordField();
+		P2PlayPass.setEnabled(false);
 		layout.putConstraint(SpringLayout.NORTH, lblP2Password, 3, SpringLayout.NORTH, P2PlayPass);
 		layout.putConstraint(SpringLayout.WEST, P2PlayPass, 25, SpringLayout.EAST, lblP2Password);
 		P2PlayPass.setColumns(8);
@@ -379,11 +419,12 @@ public class TradeWindow extends JPanel {
 		add(P2PlayPass);
 		
 		P2PlayLockOff = new JButton("Lock Offer");
+		P2PlayLockOff.setEnabled(false);
 		layout.putConstraint(SpringLayout.NORTH, P2PlayLockOff, -1, SpringLayout.NORTH, P2PlayPass);
 		layout.putConstraint(SpringLayout.WEST, P2PlayLockOff, 25, SpringLayout.EAST, P2PlayPass);
 		add(P2PlayLockOff);
 		
-		lblP3Offer = new JLabel("P3 Offers:");
+		lblP3Offer = new JLabel(p3.name + " Offers:");
 		layout.putConstraint(SpringLayout.NORTH, lblP3Offer, 10, SpringLayout.SOUTH, lblP2Password);
 		lblP3Offer.setFont(new Font("Tahoma", Font.BOLD, 12));
 		layout.putConstraint(SpringLayout.WEST, lblP3Offer, 10, SpringLayout.WEST, this);
@@ -397,6 +438,7 @@ public class TradeWindow extends JPanel {
 		add(P3PlaySep);
 		
 		textP3Lumb = new JTextField();
+		textP3Lumb.setEditable(false);
 		textP3Lumb.setHorizontalAlignment(SwingConstants.RIGHT);
 		textP3Lumb.setText("0");
 		layout.putConstraint(SpringLayout.NORTH, textP3Lumb, 6, SpringLayout.SOUTH, P3PlaySep);
@@ -415,6 +457,7 @@ public class TradeWindow extends JPanel {
 		add(lblP3Brick);
 		
 		textP3Brick = new JTextField();
+		textP3Brick.setEditable(false);
 		layout.putConstraint(SpringLayout.WEST, textP3Brick, 10, SpringLayout.EAST, lblP3Brick);
 		textP3Brick.setHorizontalAlignment(SwingConstants.RIGHT);
 		textP3Brick.setText("0");
@@ -428,6 +471,7 @@ public class TradeWindow extends JPanel {
 		add(lblP3Iron);
 		
 		textP3Iron = new JTextField();
+		textP3Iron.setEditable(false);
 		layout.putConstraint(SpringLayout.WEST, textP3Iron, 10, SpringLayout.EAST, lblP3Iron);
 		textP3Iron.setHorizontalAlignment(SwingConstants.RIGHT);
 		textP3Iron.setText("0");
@@ -441,6 +485,7 @@ public class TradeWindow extends JPanel {
 		add(lblP3Sheep);
 		
 		textP3Sheep = new JTextField();
+		textP3Sheep.setEditable(false);
 		layout.putConstraint(SpringLayout.WEST, textP3Sheep, 10, SpringLayout.EAST, lblP3Sheep);
 		textP3Sheep.setHorizontalAlignment(SwingConstants.RIGHT);
 		textP3Sheep.setText("0");
@@ -454,6 +499,7 @@ public class TradeWindow extends JPanel {
 		add(lblP3Wheat);
 		
 		textP3Wheat = new JTextField();
+		textP3Wheat.setEditable(false);
 		layout.putConstraint(SpringLayout.WEST, textP3Wheat, 10, SpringLayout.EAST, lblP3Wheat);
 		textP3Wheat.setHorizontalAlignment(SwingConstants.RIGHT);
 		textP3Wheat.setText("0");
@@ -466,6 +512,7 @@ public class TradeWindow extends JPanel {
 		add(lblP3Password);
 		
 		P3PlayPass = new JPasswordField();
+		P3PlayPass.setEnabled(false);
 		layout.putConstraint(SpringLayout.NORTH, lblP3Password, 3, SpringLayout.NORTH, P3PlayPass);
 		layout.putConstraint(SpringLayout.WEST, P3PlayPass, 25, SpringLayout.EAST, lblP3Password);
 		P3PlayPass.setColumns(8);
@@ -473,6 +520,7 @@ public class TradeWindow extends JPanel {
 		add(P3PlayPass);
 		
 		P3PlayLockOff = new JButton("Lock Offer");
+		P3PlayLockOff.setEnabled(false);
 		layout.putConstraint(SpringLayout.NORTH, P3PlayLockOff, -1, SpringLayout.NORTH, P3PlayPass);
 		layout.putConstraint(SpringLayout.WEST, P3PlayLockOff, 25, SpringLayout.EAST, P3PlayPass);
 		add(P3PlayLockOff);
@@ -523,16 +571,99 @@ public class TradeWindow extends JPanel {
 		P3PlayLockOff.addActionListener(new lockListener());
 		P3PlayLockOff.setActionCommand("p3Lock");
 		
+		btnP1Acc = new JButton("Accept Offer");
+		btnP1Acc.setEnabled(false);
+		layout.putConstraint(SpringLayout.NORTH, btnP1Acc, 0, SpringLayout.NORTH, P1PlayLockOff);
+		layout.putConstraint(SpringLayout.WEST, btnP1Acc, 0, SpringLayout.WEST, textActSheep);
+		add(btnP1Acc);
+		btnP1Acc.addActionListener(new tradeListener());
+		
+		btnP2Acc = new JButton("Accept Offer");
+		layout.putConstraint(SpringLayout.NORTH, btnP2Acc, 0, SpringLayout.NORTH, P2PlayLockOff);
+		layout.putConstraint(SpringLayout.WEST, btnP2Acc, 0, SpringLayout.WEST, btnP1Acc);
+		btnP2Acc.setEnabled(false);
+		add(btnP2Acc);
+		btnP2Acc.addActionListener(new tradeListener());
+		
+		btnP3Acc = new JButton("Accept Offer");
+		btnP3Acc.setEnabled(false);
+		layout.putConstraint(SpringLayout.NORTH, btnP3Acc, 0, SpringLayout.NORTH, P3PlayLockOff);
+		layout.putConstraint(SpringLayout.WEST, btnP3Acc, 0, SpringLayout.WEST, btnP2Acc);
+		add(btnP3Acc);
+		btnP3Acc.addActionListener(new tradeListener());
+		
+		btnEndTrading = new JButton("End Trading");
+		layout.putConstraint(SpringLayout.NORTH, btnEndTrading, 0, SpringLayout.NORTH, actPlayLockOff);
+		layout.putConstraint(SpringLayout.WEST, btnEndTrading, 0, SpringLayout.WEST, btnP1Acc);
+		add(btnEndTrading);
+		btnEndTrading.addActionListener(new endTrading());
+		
+		
+	}
+	
+	public boolean validateResources(int playerNum){
+		
+		if(playerNum == 0){
+			int iron = Integer.parseInt(textActIron.getText());
+			if(!(iron <= active.getIron())) return false;
+			int brick = Integer.parseInt(textActBrick.getText());
+			if(!(brick <= active.getBrick())) return false;
+			int lumber = Integer.parseInt(textActLumb.getText());
+			if(!(lumber <= active.getLumber())) return false;
+			int sheep = Integer.parseInt(textActSheep.getText());
+			if(!(sheep <= active.getSheep())) return false;
+			int wheat = Integer.parseInt(textActWheat.getText());
+			if(!(wheat <= active.getWheat())) return false;
+		}
+		if(playerNum == 1){
+			int iron = Integer.parseInt(textP1Iron.getText());
+			if(!(iron <= p1.getIron())) return false;
+			int brick = Integer.parseInt(textP1Brick.getText());
+			if(!(brick <= p1.getBrick())) return false;
+			int lumber = Integer.parseInt(textP1Lumb.getText());
+			if(!(lumber <= p1.getLumber())) return false;
+			int sheep = Integer.parseInt(textP1Sheep.getText());
+			if(!(sheep <= p1.getSheep())) return false;
+			int wheat = Integer.parseInt(textP1Wheat.getText());
+			if(!(wheat <= p1.getWheat())) return false;
+		}
+		if(playerNum == 2){
+			int iron = Integer.parseInt(textP2Iron.getText());
+			if(!(iron <= p2.getIron())) return false;
+			int brick = Integer.parseInt(textP2Brick.getText());
+			if(!(brick <= p2.getBrick())) return false;
+			int lumber = Integer.parseInt(textP2Lumb.getText());
+			if(!(lumber <= p2.getLumber())) return false;
+			int sheep = Integer.parseInt(textP2Sheep.getText());
+			if(!(sheep <= p2.getSheep())) return false;
+			int wheat = Integer.parseInt(textP2Wheat.getText());
+			if(!(wheat <= p2.getWheat())) return false;
+		}
+		if(playerNum == 3){
+			int iron = Integer.parseInt(textP3Iron.getText());
+			if(!(iron <= p3.getIron())) return false;
+			int brick = Integer.parseInt(textP3Brick.getText());
+			if(!(brick <= p3.getBrick())) return false;
+			int lumber = Integer.parseInt(textP3Lumb.getText());
+			if(!(lumber <= p3.getLumber())) return false;
+			int sheep = Integer.parseInt(textP3Sheep.getText());
+			if(!(sheep <= p3.getSheep())) return false;
+			int wheat = Integer.parseInt(textP3Wheat.getText());
+			if(!(wheat <= p3.getWheat())) return false;
+		}
+		return true;
 	}
 	
 	class lockListener implements ActionListener{
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			if(e.getActionCommand().equals("activeLock") && (new String(actPlayPass.getPassword()).equals(actPass))){
+			if(e.getActionCommand().equals("activeLock") && (new String(actPlayPass.getPassword()).equals(actPass)) && validateResources(0)){
 				for(JTextField j : actPlayFields){
 					j.setEditable(false);
 				}
+				actPlayPass.setEditable(false);
+				actPlayLockOff.setEnabled(false);
 				for(JTextField j : p1Fields){
 					j.setEditable(true);
 				}
@@ -543,28 +674,131 @@ public class TradeWindow extends JPanel {
 					j.setEditable(true);
 				}
 				gl.sendTrade();
+				P1PlayLockOff.setEnabled(true);
+				P1PlayPass.setEnabled(true);
+				P2PlayLockOff.setEnabled(true);
+				P2PlayPass.setEnabled(true);
+				P3PlayLockOff.setEnabled(true);
+				P3PlayPass.setEnabled(true);
 				activeLocked = true;
 			}
-			if(e.getActionCommand().equals("p1Lock") && activeLocked && (new String(P1PlayPass.getPassword()).equals(p1Pass))){
+			if(e.getActionCommand().equals("p1Lock") && activeLocked && (new String(P1PlayPass.getPassword()).equals(p1Pass)) && validateResources(1)){
 				for(JTextField j : p1Fields){
 					j.setEditable(false);
 				}
+				P1PlayPass.setEditable(false);
+				P1PlayLockOff.setEnabled(false);
 				p1Locked = true;
 			}
-			if(e.getActionCommand().equals("p2Lock") && activeLocked && (new String(P2PlayPass.getPassword()).equals(p2Pass))){
+			if(e.getActionCommand().equals("p2Lock") && activeLocked && (new String(P2PlayPass.getPassword()).equals(p2Pass)) && validateResources(2)){
 				for(JTextField j : p2Fields){
 					j.setEditable(false);
 				}
+				P2PlayPass.setEditable(false);
+				P2PlayLockOff.setEnabled(false);
 				p2Locked = true;
 			}
-			if(e.getActionCommand().equals("p3Lock") && activeLocked && (new String(P3PlayPass.getPassword()).equals(p3Pass))){
+			if(e.getActionCommand().equals("p3Lock") && activeLocked && (new String(P3PlayPass.getPassword()).equals(p3Pass)) && validateResources(3)){
 				for(JTextField j : p3Fields){
 					j.setEditable(false);
 				}
+				P3PlayPass.setEditable(false);
+				P3PlayLockOff.setEnabled(false);
 				p3Locked = true;
+			}
+			if(p3Locked && p2Locked && p1Locked){
+				btnP1Acc.setEnabled(true);
+				btnP2Acc.setEnabled(true);
+				btnP3Acc.setEnabled(true);
 			}
 		}
 		
 	}
+
+	class tradeListener implements ActionListener{
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			if(! (activeLocked && p1Locked && p2Locked && p3Locked)) return;	
+			if(!(new String(actPlayPass.getPassword()).equals(actPass))) return;
+			
+			int source = Integer.parseInt(e.getActionCommand());
+			
+			int aIron  = Integer.parseInt(textActIron.getText());
+			int aBrick = Integer.parseInt(textActBrick.getText());
+			int aSheep = Integer.parseInt(textActSheep.getText());
+			int aLumb  = Integer.parseInt(textActLumb.getText());
+			int aWheat = Integer.parseInt(textActWheat.getText());
+			
+			int oIron = 0;
+			int oBrick = 0;
+			int oSheep = 0;
+			int oLumb = 0;
+			int oWheat = 0;
+			
+			Player tradee = active;
+			
+			if(source == 1){
+				oIron  = Integer.parseInt(textP1Iron.getText());
+				oBrick = Integer.parseInt(textP1Brick.getText());
+				oSheep = Integer.parseInt(textP1Sheep.getText());
+				oLumb  = Integer.parseInt(textP1Lumb.getText());
+				oWheat = Integer.parseInt(textP1Wheat.getText());
+				tradee = p1;
+			}
+			else if(source == 2){
+				oIron  = Integer.parseInt(textP2Iron.getText());
+				oBrick = Integer.parseInt(textP2Brick.getText());
+				oSheep = Integer.parseInt(textP2Sheep.getText());
+				oLumb  = Integer.parseInt(textP2Lumb.getText());
+				oWheat = Integer.parseInt(textP2Wheat.getText());
+				tradee = p2;
+			}
+			else if(source == 3){
+				oIron  = Integer.parseInt(textP3Iron.getText());
+				oBrick = Integer.parseInt(textP3Brick.getText());
+				oSheep = Integer.parseInt(textP3Sheep.getText());
+				oLumb  = Integer.parseInt(textP3Lumb.getText());
+				oWheat = Integer.parseInt(textP3Wheat.getText());
+				tradee = p3;
+			}
+			
+			tradee.iron   += aIron;
+			tradee.brick  += aBrick;
+			tradee.lumber += aLumb;
+			tradee.sheep  += aSheep;
+			tradee.wheat  += aWheat;
+			
+			tradee.iron   -= oIron;
+			tradee.brick  -= oBrick;
+			tradee.lumber -= oLumb;
+			tradee.sheep  -= oSheep;
+			tradee.wheat  -= oWheat;
+			
+			active.iron   -= aIron;
+			active.brick  -= aBrick;
+			active.lumber -= aLumb;
+			active.sheep  -= aSheep;
+			active.wheat  -= aWheat;
+			
+			active.iron   += oIron;
+			active.brick  += oBrick;
+			active.lumber += oLumb;
+			active.sheep  += oSheep;
+			active.wheat  += oWheat;
+			
+			gl.endTrade();
+		}
+		
+	}
 	
+	class endTrading implements ActionListener{
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			gl.endTrade();
+			
+		}
+		
+	}
 }

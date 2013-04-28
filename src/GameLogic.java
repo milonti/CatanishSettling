@@ -24,9 +24,11 @@ public class GameLogic {
 	
 	String activePlayer = null;
 	
-	ArrayList<String> playerList,loseR,winR;
+	ArrayList<String> loseR,winR;
 	HashMap<String, ArrayList<String>> aiResponses;
 	
+	ArrayList<Player> playerList;
+	Player activeP;
 	
 	ArrayList<Integer> hexRolls;
 	ArrayList<Resource> resDistr;
@@ -43,14 +45,18 @@ public class GameLogic {
 		road = new ArrayList<GamePiece>();
 		verts = new ArrayList<GamePiece>(54);
 		
-		playerList = new ArrayList<String>();
+		playerList = new ArrayList<Player>();
 		loseR = new ArrayList<String>();
 		winR = new ArrayList<String>();
 		aiResponses= new HashMap<String, ArrayList<String>>();
 
+		playerList.add(new Player("Shamino", "mylittlepony"));
+		playerList.add(new Player("YOLO", "yourmom"));
+		playerList.add(new Player("Kurios", "coonapp"));
+		playerList.add(new Player("Ghandi", "nukeseverywhere"));		
 		
-		activePlayer = "woot";
-		
+		activeP = playerList.get(0);
+				
 		hexRolls = new ArrayList<Integer>();
 		hexRolls.add(11);
 		hexRolls.add(12);
@@ -274,19 +280,17 @@ public class GameLogic {
 		//appropriateResponse, so gamelogic.aiResponses("win")
 		
 		
-		
-		
-	
+			
 	}
 
 	public String getActivePlayer() {
-		return activePlayer;
+		return activeP.name;
 	}
 	
 	public void appropriateResponse(String key,String sendingAI)
 	{
 		//random chance to do or not do goes here
-		//zipp wants to
+		//zipp wants to EAT THE CODE
 		if(true)
 		{
 			//pick a random response based on key here
@@ -318,10 +322,14 @@ public class GameLogic {
 		MainGamePanel.setVisible(false);
 		tFrame = new JFrame("Trade Window");
 		TradeWindow tPanel = new TradeWindow(activePlayerNum, this);
-		tFrame.setBounds(100, 100, 900, 750);
+		tFrame.setBounds(100, 100, 500, 400);
 		tFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		tFrame.add(tPanel);
 		tFrame.setVisible(true);
+		
+	}
+	
+	public void startAiTrade(int aiPlayerNum){
 		
 	}
 	

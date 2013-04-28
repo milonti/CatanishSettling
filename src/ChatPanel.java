@@ -69,7 +69,7 @@ public class ChatPanel extends JPanel {
 			String newChatLine = "";
 			
 			if( gl.getActivePlayer() != null){
-				newChatLine += gl.getActivePlayer();
+				newChatLine += gl.getActivePlayer() + ": ";
 			}
 			else{
 				newChatLine += "System: ";

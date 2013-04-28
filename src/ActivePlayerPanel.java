@@ -47,7 +47,7 @@ public class ActivePlayerPanel extends JPanel {
 	private JTextField brickTrade;
 	private JTextField ironTrade;
 	private JTextField WheatTrade;
-	private int activePlayerNum=1;//change this and afterwards to gamelogics
+	private int activePlayerNum=0;//change this and afterwards to gamelogics
 	private int lumbI=0; 
 	private int sheepI=0;
 	private int brickI=0;
