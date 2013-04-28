@@ -254,7 +254,7 @@ public class ActivePlayerPanel extends JPanel {
 		layout.putConstraint(SpringLayout.EAST, btnBuildSet, -2, SpringLayout.EAST, this);
 		add(btnBuildSet);
 		
-		JButton btnBuildCity = new JButton("City: 1W, 3I, 1Sett");
+		JButton btnBuildCity = new JButton("City: 2W, 3I, 1Sett");
 		layout.putConstraint(SpringLayout.NORTH, btnBuildCity, 6, SpringLayout.SOUTH, btnBuildSet);
 		layout.putConstraint(SpringLayout.WEST, btnBuildCity, 2, SpringLayout.WEST, this);
 		layout.putConstraint(SpringLayout.EAST, btnBuildCity, -2, SpringLayout.EAST, this);
