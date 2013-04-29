@@ -19,7 +19,7 @@ public class ActivePlayerPanel extends JPanel {
 	GameLogic gl;
 	SpringLayout layout;
 	private JButton trade;
-	private JTextField textP1cards;
+	private JTextField textActRes;
 	private JTextField textP1points;
 	private JTextField textP1devCards;
 	private JTextField textP2cards;
@@ -59,6 +59,7 @@ public class ActivePlayerPanel extends JPanel {
 	private int yearI=0;
 	private int victoryI=0;
 	private int resources=0;
+	private JLabel lblP1;
 	
 	
 	
@@ -70,7 +71,7 @@ public class ActivePlayerPanel extends JPanel {
 		
 		BtnListener lstn = new BtnListener();
 		
-		JLabel lblP1 = new JLabel("Active Player: 1");
+		lblP1 = new JLabel(gl.activeP.name);
 		layout.putConstraint(SpringLayout.NORTH, lblP1, 10, SpringLayout.NORTH, this);
 		layout.putConstraint(SpringLayout.WEST, lblP1, 0, SpringLayout.WEST, this);
 		layout.putConstraint(SpringLayout.EAST, lblP1, 0, SpringLayout.EAST, this);
@@ -86,23 +87,23 @@ public class ActivePlayerPanel extends JPanel {
 		add(p1Separator);
 		
 				
-		textP1cards = new JTextField("0");
-		layout.putConstraint(SpringLayout.EAST, textP1cards, -3, SpringLayout.EAST, this);
-		textP1cards.setHorizontalAlignment(SwingConstants.RIGHT);
-		textP1cards.setEditable(false);
-		layout.putConstraint(SpringLayout.NORTH, textP1cards, 3, SpringLayout.SOUTH, p1Separator);
-		textP1cards.setColumns(3);
-		add(textP1cards);
+		textActRes = new JTextField("0");
+		layout.putConstraint(SpringLayout.EAST, textActRes, -3, SpringLayout.EAST, this);
+		textActRes.setHorizontalAlignment(SwingConstants.RIGHT);
+		textActRes.setEditable(false);
+		layout.putConstraint(SpringLayout.NORTH, textActRes, 3, SpringLayout.SOUTH, p1Separator);
+		textActRes.setColumns(3);
+		add(textActRes);
 		
 		JLabel lblP1cards = new JLabel("Total Resources:");
 		layout.putConstraint(SpringLayout.WEST, lblP1cards, 3, SpringLayout.WEST, this);
-		layout.putConstraint(SpringLayout.NORTH, lblP1cards, 3, SpringLayout.NORTH, textP1cards);
+		layout.putConstraint(SpringLayout.NORTH, lblP1cards, 3, SpringLayout.NORTH, textActRes);
 		add(lblP1cards);
 		
 		lumbT = new JTextField("0");
-		layout.putConstraint(SpringLayout.EAST, lumbT, 0, SpringLayout.EAST, textP1cards);
+		layout.putConstraint(SpringLayout.EAST, lumbT, 0, SpringLayout.EAST, textActRes);
 		lumbT.setHorizontalAlignment(SwingConstants.RIGHT);
-		layout.putConstraint(SpringLayout.NORTH, lumbT, 6, SpringLayout.SOUTH, textP1cards);
+		layout.putConstraint(SpringLayout.NORTH, lumbT, 6, SpringLayout.SOUTH, textActRes);
 		lumbT.setEditable(false);
 		add(lumbT);
 		lumbT.setColumns(3);
@@ -286,6 +287,18 @@ public class ActivePlayerPanel extends JPanel {
 	
 	public void update(GameLogic l){
 		this.gl = l;
+		lblP1.setText(gl.activeP.name);
+		textActRes.setText("" + (gl.activeP.iron + gl.activeP.brick + gl.activeP.lumber + gl.activeP.sheep + gl.activeP.wheat));
+		lumbT.setText("" + gl.activeP.lumber);
+		brickT.setText("" + gl.activeP.brick);
+		ironT.setText("" + gl.activeP.iron);
+		sheepT.setText("" + gl.activeP.sheep);
+		wheatT.setText("" + gl.activeP.wheat);
+		soldierT.setText("" + gl.activeP.soldierHand);
+		monopolyT.setText("" + gl.activeP.monopolyHand);
+		roadT.setText("" + gl.activeP.roadBuildHand);
+		yearT.setText("" + gl.activeP.yearPlentyHand);
+		victoryT.setText("" + gl.activeP.victoryHand);
 		
 	}
 	
@@ -295,8 +308,7 @@ public class ActivePlayerPanel extends JPanel {
 		public void actionPerformed(ActionEvent e) {
 			String source = e.getActionCommand();
 			if(source.equals("trade")){
-				gl.newChatMessage("System: Player " + gl.getActivePlayer() + " would like a trade.");
-				gl.startTrade(activePlayerNum);
+				gl.startTrade(gl.actPNum);
 			
 			
 			}

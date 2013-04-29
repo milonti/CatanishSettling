@@ -403,6 +403,8 @@ public class GameLogic {
 	public void endTurn() {
 		if(actPNum == 3) actPNum = 0;
 		else actPNum++;
+		activeP = playerList.get(actPNum);
+		newChatMessage("System: It is now " + activeP.name + "\'s turn.");
 		updateEverything();				
 		
 	}

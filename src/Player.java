@@ -18,6 +18,16 @@ public class Player {
 	ArrayList<GamePiece> cities;
 
 	public String name;
+
+	public int soldierHand;
+	public int monopolyHand;
+	public int roadBuildHand;
+	public int yearPlentyHand;
+	public int victoryHand;
+
+	public int victPoints;
+
+	public int soldierPlayed;
 	
 	public Player(String n, String p){
 		this.name = n;
@@ -27,6 +37,13 @@ public class Player {
 		lumber = 0;
 		sheep = 0;
 		wheat = 0;
+		soldierHand = 0;
+		monopolyHand = 0;
+		roadBuildHand = 0;
+		yearPlentyHand = 0;
+		victoryHand = 0;
+		victPoints = 0;
+		soldierPlayed = 0;
 		cities = new ArrayList<GamePiece>();
 		color = new Color(0, 0, 0);
 		

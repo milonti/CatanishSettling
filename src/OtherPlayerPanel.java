@@ -39,7 +39,7 @@ public class OtherPlayerPanel extends JPanel {
 		setPreferredSize(new Dimension(150, 700));
 		layout = new SpringLayout();
 		setLayout(layout);
-		JLabel lblP1 = new JLabel("Player 1");
+		JLabel lblP1 = new JLabel("" + gl.playerList.get(0).name);
 		layout.putConstraint(SpringLayout.NORTH, lblP1, 30, SpringLayout.NORTH, this);
 		lblP1.setFont(new Font("Tahoma", Font.BOLD, 14));
 		lblP1.setHorizontalAlignment(SwingConstants.CENTER);
@@ -63,6 +63,8 @@ public class OtherPlayerPanel extends JPanel {
 		add(lblP1points);
 		
 		textP1cards = new JTextField();
+		textP1cards.setHorizontalAlignment(SwingConstants.RIGHT);
+		textP1cards.setText("0");
 		textP1cards.setEditable(false);
 		layout.putConstraint(SpringLayout.NORTH, textP1cards, 3, SpringLayout.SOUTH, p1Separator);
 		layout.putConstraint(SpringLayout.EAST, textP1cards, -35, SpringLayout.EAST, this);
@@ -71,6 +73,8 @@ public class OtherPlayerPanel extends JPanel {
 		textP1cards.setColumns(3);
 		
 		textP1points = new JTextField();
+		textP1points.setHorizontalAlignment(SwingConstants.RIGHT);
+		textP1points.setText("0");
 		textP1points.setEditable(false);
 		layout.putConstraint(SpringLayout.EAST, textP1points, 0, SpringLayout.EAST, textP1cards);
 		layout.putConstraint(SpringLayout.NORTH, lblP1points, 3, SpringLayout.NORTH, textP1points);
@@ -79,6 +83,8 @@ public class OtherPlayerPanel extends JPanel {
 		textP1points.setColumns(3);
 		
 		textP1devCards = new JTextField();
+		textP1devCards.setHorizontalAlignment(SwingConstants.RIGHT);
+		textP1devCards.setText("0");
 		textP1devCards.setEditable(false);
 		layout.putConstraint(SpringLayout.NORTH, textP1devCards, 6, SpringLayout.SOUTH, textP1points);
 		layout.putConstraint(SpringLayout.WEST, textP1devCards, 0, SpringLayout.WEST, textP1cards);
@@ -91,6 +97,8 @@ public class OtherPlayerPanel extends JPanel {
 		add(lblP1devCards);
 		
 		textP1sold = new JTextField();
+		textP1sold.setText("0");
+		textP1sold.setHorizontalAlignment(SwingConstants.RIGHT);
 		textP1sold.setEditable(false);
 		layout.putConstraint(SpringLayout.NORTH, textP1sold, 6, SpringLayout.SOUTH, textP1devCards);
 		layout.putConstraint(SpringLayout.WEST, textP1sold, 0, SpringLayout.WEST, textP1devCards);
@@ -102,7 +110,7 @@ public class OtherPlayerPanel extends JPanel {
 		layout.putConstraint(SpringLayout.WEST, lblP1sold, 0, SpringLayout.WEST, lblP1);
 		add(lblP1sold);
 		
-		JLabel lblP2 = new JLabel("Player 2");
+		JLabel lblP2 = new JLabel("" + gl.playerList.get(1).name);
 		layout.putConstraint(SpringLayout.NORTH, lblP2, 6, SpringLayout.SOUTH, textP1sold);
 		layout.putConstraint(SpringLayout.WEST, lblP2, 0, SpringLayout.WEST, lblP1);
 		layout.putConstraint(SpringLayout.EAST, lblP2, -10, SpringLayout.EAST, this);
@@ -126,6 +134,8 @@ public class OtherPlayerPanel extends JPanel {
 		add(lblP2points);
 		
 		textP2cards = new JTextField();
+		textP2cards.setText("0");
+		textP2cards.setHorizontalAlignment(SwingConstants.RIGHT);
 		textP2cards.setEditable(false);
 		layout.putConstraint(SpringLayout.NORTH, textP2cards, 3, SpringLayout.SOUTH, p2Separator);
 		layout.putConstraint(SpringLayout.EAST, textP2cards, -35, SpringLayout.EAST, this);
@@ -134,6 +144,8 @@ public class OtherPlayerPanel extends JPanel {
 		textP2cards.setColumns(3);
 		
 		textP2points = new JTextField();
+		textP2points.setText("0");
+		textP2points.setHorizontalAlignment(SwingConstants.RIGHT);
 		textP2points.setEditable(false);
 		layout.putConstraint(SpringLayout.EAST, textP2points, 0, SpringLayout.EAST, textP2cards);
 		layout.putConstraint(SpringLayout.NORTH, lblP2points, 3, SpringLayout.NORTH, textP2points);
@@ -142,6 +154,8 @@ public class OtherPlayerPanel extends JPanel {
 		textP2points.setColumns(3);
 		
 		textP2devCards = new JTextField();
+		textP2devCards.setText("0");
+		textP2devCards.setHorizontalAlignment(SwingConstants.RIGHT);
 		textP2devCards.setEditable(false);
 		layout.putConstraint(SpringLayout.NORTH, textP2devCards, 6, SpringLayout.SOUTH, textP2points);
 		layout.putConstraint(SpringLayout.WEST, textP2devCards, 0, SpringLayout.WEST, textP2cards);
@@ -154,6 +168,8 @@ public class OtherPlayerPanel extends JPanel {
 		add(lblP2devCards);
 		
 		textP2sold = new JTextField();
+		textP2sold.setText("0");
+		textP2sold.setHorizontalAlignment(SwingConstants.RIGHT);
 		textP2sold.setEditable(false);
 		layout.putConstraint(SpringLayout.NORTH, textP2sold, 6, SpringLayout.SOUTH, textP2devCards);
 		layout.putConstraint(SpringLayout.WEST, textP2sold, 0, SpringLayout.WEST, textP2devCards);
@@ -165,7 +181,7 @@ public class OtherPlayerPanel extends JPanel {
 		layout.putConstraint(SpringLayout.WEST, lblP2sold, 0, SpringLayout.WEST, lblP2);
 		add(lblP2sold);
 		
-		JLabel lblP3 = new JLabel("Player 3");
+		JLabel lblP3 = new JLabel("" + gl.playerList.get(2).name);
 		layout.putConstraint(SpringLayout.NORTH, lblP3, 6, SpringLayout.SOUTH, textP2sold);
 		layout.putConstraint(SpringLayout.WEST, lblP3, 0, SpringLayout.WEST, lblP2);
 		layout.putConstraint(SpringLayout.EAST, lblP3, -10, SpringLayout.EAST, this);
@@ -189,6 +205,8 @@ public class OtherPlayerPanel extends JPanel {
 		add(lblP3points);
 		
 		textP3cards = new JTextField();
+		textP3cards.setText("0");
+		textP3cards.setHorizontalAlignment(SwingConstants.RIGHT);
 		textP3cards.setEditable(false);
 		layout.putConstraint(SpringLayout.NORTH, textP3cards, 3, SpringLayout.SOUTH, p3Separator);
 		layout.putConstraint(SpringLayout.EAST, textP3cards, -35, SpringLayout.EAST, this);
@@ -197,6 +215,8 @@ public class OtherPlayerPanel extends JPanel {
 		textP3cards.setColumns(3);
 		
 		textP3points = new JTextField();
+		textP3points.setText("0");
+		textP3points.setHorizontalAlignment(SwingConstants.RIGHT);
 		textP3points.setEditable(false);
 		layout.putConstraint(SpringLayout.EAST, textP3points, 0, SpringLayout.EAST, textP3cards);
 		layout.putConstraint(SpringLayout.NORTH, lblP3points, 3, SpringLayout.NORTH, textP3points);
@@ -205,6 +225,8 @@ public class OtherPlayerPanel extends JPanel {
 		textP3points.setColumns(3);
 		
 		textP3devCards = new JTextField();
+		textP3devCards.setText("0");
+		textP3devCards.setHorizontalAlignment(SwingConstants.RIGHT);
 		textP3devCards.setEditable(false);
 		layout.putConstraint(SpringLayout.NORTH, textP3devCards, 6, SpringLayout.SOUTH, textP3points);
 		layout.putConstraint(SpringLayout.WEST, textP3devCards, 0, SpringLayout.WEST, textP3cards);
@@ -217,6 +239,8 @@ public class OtherPlayerPanel extends JPanel {
 		add(lblP3devCards);
 		
 		textP3sold = new JTextField();
+		textP3sold.setText("0");
+		textP3sold.setHorizontalAlignment(SwingConstants.RIGHT);
 		textP3sold.setEditable(false);
 		layout.putConstraint(SpringLayout.NORTH, textP3sold, 6, SpringLayout.SOUTH, textP3devCards);
 		layout.putConstraint(SpringLayout.WEST, textP3sold, 0, SpringLayout.WEST, textP3devCards);
@@ -228,7 +252,7 @@ public class OtherPlayerPanel extends JPanel {
 		layout.putConstraint(SpringLayout.WEST, lblP3sold, 0, SpringLayout.WEST, lblP3);
 		add(lblP3sold);
 		
-		JLabel lblP4 = new JLabel("Player 4");
+		JLabel lblP4 = new JLabel("" + gl.playerList.get(3).name);
 		layout.putConstraint(SpringLayout.NORTH, lblP4, 6, SpringLayout.SOUTH, textP3sold);
 		layout.putConstraint(SpringLayout.WEST, lblP4, 0, SpringLayout.WEST, lblP3);
 		layout.putConstraint(SpringLayout.EAST, lblP4, -10, SpringLayout.EAST, this);
@@ -252,6 +276,8 @@ public class OtherPlayerPanel extends JPanel {
 		add(lblP4points);
 		
 		textP4cards = new JTextField();
+		textP4cards.setText("0");
+		textP4cards.setHorizontalAlignment(SwingConstants.RIGHT);
 		textP4cards.setEditable(false);
 		layout.putConstraint(SpringLayout.NORTH, textP4cards, 3, SpringLayout.SOUTH, p4Separator);
 		layout.putConstraint(SpringLayout.EAST, textP4cards, -35, SpringLayout.EAST, this);
@@ -260,6 +286,8 @@ public class OtherPlayerPanel extends JPanel {
 		textP4cards.setColumns(3);
 		
 		textP4points = new JTextField();
+		textP4points.setText("0");
+		textP4points.setHorizontalAlignment(SwingConstants.RIGHT);
 		textP4points.setEditable(false);
 		layout.putConstraint(SpringLayout.EAST, textP4points, 0, SpringLayout.EAST, textP4cards);
 		layout.putConstraint(SpringLayout.NORTH, lblP4points, 3, SpringLayout.NORTH, textP4points);
@@ -268,6 +296,8 @@ public class OtherPlayerPanel extends JPanel {
 		textP4points.setColumns(3);
 		
 		textP4devCards = new JTextField();
+		textP4devCards.setText("0");
+		textP4devCards.setHorizontalAlignment(SwingConstants.RIGHT);
 		textP4devCards.setEditable(false);
 		layout.putConstraint(SpringLayout.NORTH, textP4devCards, 6, SpringLayout.SOUTH, textP4points);
 		layout.putConstraint(SpringLayout.WEST, textP4devCards, 0, SpringLayout.WEST, textP4cards);
@@ -280,6 +310,8 @@ public class OtherPlayerPanel extends JPanel {
 		add(lblP4devCards);
 		
 		textP4sold = new JTextField();
+		textP4sold.setText("0");
+		textP4sold.setHorizontalAlignment(SwingConstants.RIGHT);
 		textP4sold.setEditable(false);
 		layout.putConstraint(SpringLayout.NORTH, textP4sold, 6, SpringLayout.SOUTH, textP4devCards);
 		layout.putConstraint(SpringLayout.WEST, textP4sold, 0, SpringLayout.WEST, textP4devCards);
@@ -295,6 +327,33 @@ public class OtherPlayerPanel extends JPanel {
 	public void update(GameLogic l){
 		//TODO
 		this.gl = l;
+		textP1cards.setText("" + (gl.playerList.get(0).brick + gl.playerList.get(0).iron + gl.playerList.get(0).sheep
+				 + gl.playerList.get(0).lumber + gl.playerList.get(0).wheat) );
+		textP1points.setText("" + gl.playerList.get(0).victPoints);
+		textP1devCards.setText("" + (gl.playerList.get(0).soldierHand + gl.playerList.get(0).monopolyHand + gl.playerList.get(0).roadBuildHand
+				 + gl.playerList.get(0).yearPlentyHand + gl.playerList.get(0).victoryHand) );
+		textP1sold.setText("" + gl.playerList.get(0).soldierPlayed);
+		
+		textP2cards.setText("" + (gl.playerList.get(1).brick + gl.playerList.get(1).iron + gl.playerList.get(1).sheep
+				 + gl.playerList.get(1).lumber + gl.playerList.get(1).wheat) );
+		textP2points.setText("" + gl.playerList.get(1).victPoints);
+		textP2devCards.setText("" + (gl.playerList.get(1).soldierHand + gl.playerList.get(1).monopolyHand + gl.playerList.get(1).roadBuildHand
+				 + gl.playerList.get(1).yearPlentyHand + gl.playerList.get(1).victoryHand) );
+		textP2sold.setText("" + gl.playerList.get(1).soldierPlayed);
+		
+		textP3cards.setText("" + (gl.playerList.get(2).brick + gl.playerList.get(2).iron + gl.playerList.get(2).sheep
+				 + gl.playerList.get(2).lumber + gl.playerList.get(2).wheat) );
+		textP3points.setText("" + gl.playerList.get(2).victPoints);
+		textP3devCards.setText("" + (gl.playerList.get(2).soldierHand + gl.playerList.get(2).monopolyHand + gl.playerList.get(2).roadBuildHand
+				 + gl.playerList.get(2).yearPlentyHand + gl.playerList.get(2).victoryHand) );
+		textP3sold.setText("" + gl.playerList.get(2).soldierPlayed);
+		
+		textP4cards.setText("" + (gl.playerList.get(3).brick + gl.playerList.get(3).iron + gl.playerList.get(3).sheep
+				 + gl.playerList.get(3).lumber + gl.playerList.get(3).wheat) );
+		textP4points.setText("" + gl.playerList.get(3).victPoints);
+		textP4devCards.setText("" + (gl.playerList.get(3).soldierHand + gl.playerList.get(3).monopolyHand + gl.playerList.get(3).roadBuildHand
+				 + gl.playerList.get(3).yearPlentyHand + gl.playerList.get(3).victoryHand) );
+		textP4sold.setText("" + gl.playerList.get(3).soldierPlayed);
 		
 	}
 	
