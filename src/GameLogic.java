@@ -298,25 +298,38 @@ public class GameLogic {
 	public String getActivePlayer() {
 		return activeP.name;
 	}
-	public ArrayList<GamePiece> usableCityLocations(Player p)
+	public ArrayList<Vertex> usableCityLocations(Player p)
 	{
-		
+		return null;
+		//yep.
 		
 	}
-	public ArrayList<GamePiece> useableRoadLocations(Player P)
+	public ArrayList<Integer> useableRoadLocations(Player P)
 	{
-		
-		for(GamePiece p:gl.verts)
+		ArrayList<Integer> returnArray=new ArrayList<Integer>();
+		for(GamePiece p:verts)
 		{
-			if((p.type==1||p.type==2)&&p.player==playerID)
+			if((!(p==null))&&(p.type==1||p.type==2)&&playerList.get(p.player).equals(P))
 			{
-				if(gl.resDistr.get(gl.SClocs.get(p.location).resIndex1).type==0)Lr+=getProb(gl.hexRolls.get(gl.SClocs.get(p.location).resIndex1))*p.type;
+				//if(gl.resDistr.get(gl.SClocs.get(p.location).resIndex1).type==0)Lr+=getProb(gl.hexRolls.get(gl.SClocs.get(p.location).resIndex1))*p.type;
+				//at this point the game piece is a city. therefore any adjacent edge is
+				//a viable road location.
+				for(Edge e:edges)
+				{
+					if((e.vertIndex1==p.location||e.vertIndex2==p.location)&&!(road.get(edges.indexOf(e))==null))
+					{
+						returnArray.add(edges.indexOf(e));
+					}
+					
+				}
 				
 				
 				
 				
 			}
 		}
+		return returnArray;
+		
 		
 	}
 	public void appropriateResponse(String key,String sendingAI)
