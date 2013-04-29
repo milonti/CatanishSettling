@@ -13,6 +13,7 @@ public class GameBoardPanel extends JPanel {
 		this.hexRolls = gl.hexRolls;
 		this.resDistr = gl.resDistr;
 		this.portOrder = gl.portOrder;
+		roadList = new ArrayList<GamePiece>();
 	}
 	
 	//Keep these in a 30 60 90 ratio
