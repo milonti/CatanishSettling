@@ -294,7 +294,27 @@ public class GameLogic {
 	public String getActivePlayer() {
 		return activeP.name;
 	}
-	
+	public ArrayList<GamePiece> usableCityLocations(Player p)
+	{
+		
+		
+	}
+	public ArrayList<GamePiece> useableRoadLocations(Player P)
+	{
+		
+		for(GamePiece p:gl.verts)
+		{
+			if((p.type==1||p.type==2)&&p.player==playerID)
+			{
+				if(gl.resDistr.get(gl.SClocs.get(p.location).resIndex1).type==0)Lr+=getProb(gl.hexRolls.get(gl.SClocs.get(p.location).resIndex1))*p.type;
+				
+				
+				
+				
+			}
+		}
+		
+	}
 	public void appropriateResponse(String key,String sendingAI)
 	{
 		//random chance to do or not do goes here
