@@ -30,6 +30,8 @@ public class GameBoardPanel extends JPanel {
 	private ArrayList<Resource> resDistr;
 	private ArrayList<Resource> portOrder;
 	
+	private ArrayList<GamePiece> roadList;
+	
 	
 	public void paint(Graphics g){
 		
@@ -211,7 +213,9 @@ public class GameBoardPanel extends JPanel {
 		g.drawString(" "+portOrder.get(7).toPortString(), 301 - 3*b, 168 + 3*(a+c));
 		g.drawString(" "+portOrder.get(8).toPortString(), 301 - 3*b, 168 + 1*(a+c));
 		
-		
+		for(GamePiece p : roadList){
+			if(!(p == null)) drawRoad(p.player, p.location, g);
+		}
 		
 		
 	}
@@ -670,6 +674,11 @@ public class GameBoardPanel extends JPanel {
 		g.setColor(Color.BLACK);
 		g.drawPolygon(road);
 				
+	}
+
+	public void updateLogic(GameLogic l) {
+		this.gl = l;
+		this.roadList = gl.road;  
 	}
 	
 	

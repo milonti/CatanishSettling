@@ -23,13 +23,12 @@ public class GameLogic {
 	ArrayList<GamePiece> road;
 	ArrayList<GamePiece> verts;
 	
-	String activePlayer = null;
-	
 	ArrayList<String> loseR,winR;
 	HashMap<String, ArrayList<String>> aiResponses;
 	
 	ArrayList<Player> playerList;
 	Player activeP;
+	int actPNum = 0;
 	
 	ArrayList<Integer> hexRolls;
 	ArrayList<Resource> resDistr;
@@ -62,6 +61,11 @@ public class GameLogic {
 		playerList.get(1).color = new Color(128, 0, 255); // Player 2 = Purple
 		playerList.get(2).color = new Color(0, 255, 255); // Player 3 = Cyan
 		playerList.get(3).color = new Color(102, 51,  0); // Player 4 = Brown
+		
+		playerList.get(0).pNum = 0;
+		playerList.get(1).pNum = 1;
+		playerList.get(2).pNum = 2;
+		playerList.get(3).pNum = 3;
 		
 		activeP = playerList.get(0);
 				
@@ -381,6 +385,21 @@ public class GameLogic {
 	public void sendTrade() {
 		// TODO Auto-generated method stub
 		
+	}
+
+	public void endTurn() {
+		if(actPNum == 3) actPNum = 0;
+		else actPNum++;
+		updateEverything();				
+		
+	}
+
+	private void updateEverything() {
+		GameBoard.updateLogic(this);
+		ActivePlayer.update(this);
+		OtherPlayers.update(this);
+		ChatPanel.update(this);
+		StateOfGamePanel.update(this);
 	}
 	
 }

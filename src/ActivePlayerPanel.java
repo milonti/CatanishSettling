@@ -275,11 +275,16 @@ public class ActivePlayerPanel extends JPanel {
 		lblBuildBtns.setFont(new Font("Tahoma", Font.BOLD, 12));
 		add(lblBuildBtns);
 		
+		JButton btnEndTurn = new JButton("End Turn");
+		layout.putConstraint(SpringLayout.NORTH, btnEndTurn, 30, SpringLayout.SOUTH, btnDevCardw);
+		layout.putConstraint(SpringLayout.WEST, btnEndTurn, 0, SpringLayout.WEST, btnDevCardw);
+		layout.putConstraint(SpringLayout.EAST, btnEndTurn, 0, SpringLayout.EAST, btnDevCardw);
+		add(btnEndTurn);
+		btnEndTurn.addActionListener(new endTurnListener());
 		
 	}
 	
 	public void update(GameLogic l){
-		//TODO
 		this.gl = l;
 		
 	}
@@ -300,4 +305,15 @@ public class ActivePlayerPanel extends JPanel {
 		
 		
 	}
+	
+	class endTurnListener implements ActionListener{
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			gl.endTurn();
+			
+		}
+		
+	}
+	
 }

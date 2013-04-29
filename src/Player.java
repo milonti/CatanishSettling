@@ -11,6 +11,8 @@ public class Player {
 	int sheep;
 	int wheat;
 	
+	int pNum;
+	
 	Color color;
 	
 	ArrayList<GamePiece> cities;
