@@ -44,15 +44,20 @@ public class GameLogic {
 		
 		road = new ArrayList<GamePiece>();
 		verts = new ArrayList<GamePiece>(54);
+		
 		GamePiece G=new GamePiece();
 		G.location=5;
 		G.player=2;
 		G.type=0;
 		road.add(G);
+		
+		
 		playerList = new ArrayList<Player>();
 		loseR = new ArrayList<String>();
 		winR = new ArrayList<String>();
 		aiResponses= new HashMap<String, ArrayList<String>>();
+		
+		allP = new ArrayList<GamePiece>();
 
 		//Hard coding players in interest of getting stuff done
 		playerList.add(new Player("Shamino", "mylittlepony"));
@@ -70,6 +75,41 @@ public class GameLogic {
 		playerList.get(1).pNum = 1;
 		playerList.get(2).pNum = 2;
 		playerList.get(3).pNum = 3;
+		
+		playerList.get(0).iron = 2;
+		
+		/**
+		drawSett(1, 1,g);
+		drawSett(2, 8,g);
+		drawSett(2, 2,g);
+		drawSett(1, 14, g);
+		drawSett(0, 17, g);
+		drawSett(0, 25, g);
+		drawSett(3, 26, g);
+		drawSett(2, 27, g);
+		drawSett(2, 37, g);
+		**/
+		GamePiece g1 = new GamePiece(1, 1, 1);
+		GamePiece g2 = new GamePiece(2, 8, 1);
+		GamePiece g3 = new GamePiece(2, 2, 1);
+		GamePiece g4 = new GamePiece(1, 14, 1);
+		GamePiece g5 = new GamePiece(0, 17, 1);
+		GamePiece g6 = new GamePiece(0, 25, 1);
+		GamePiece g7 = new GamePiece(3, 26, 1);
+		GamePiece g8 = new GamePiece(2, 27, 1);
+		GamePiece g9 = new GamePiece(2, 37, 1);
+		
+		allP.add(g1);
+		allP.add(g2);
+		allP.add(g3);
+		allP.add(g4);
+		allP.add(g5);
+		allP.add(g6);
+		allP.add(g7);
+		allP.add(g8);
+		allP.add(g9);
+		
+		
 		
 		activeP = playerList.get(0);
 				
@@ -428,16 +468,208 @@ public class GameLogic {
 		else actPNum++;
 		activeP = playerList.get(actPNum);
 		newChatMessage("System: It is now " + activeP.name + "\'s turn.");
+		Random r = new Random();
+		int roll = r.nextInt(11) + 1;
+		playerRolled(roll);
+		newChatMessage("System: " + activeP.name + " rolled a " + roll);
 		updateEverything();				
 		
 	}
 
-	private void updateEverything() {
+	private void playerRolled(int roll) {
+		switch(roll){
+		case 2:
+			notifySettlements(40, "wheat");
+			notifySettlements(44, "wheat");
+			notifySettlements(45, "wheat");
+			notifySettlements(48, "wheat");
+			notifySettlements(49, "wheat");
+			notifySettlements(52, "wheat");
+			break;
+		case 3:
+			notifySettlements(17, "lumber");
+			notifySettlements(22, "lumber");
+			notifySettlements(23, "lumber");
+			notifySettlements(28, "lumber");
+			notifySettlements(29, "lumber");
+			notifySettlements(34, "lumber");
+			notifySettlements(31, "iron");
+			notifySettlements(36, "iron");
+			notifySettlements(37, "iron");
+			notifySettlements(41, "iron");
+			notifySettlements(42, "iron");
+			notifySettlements(46, "iron");
+			break;
+		case 4:
+			notifySettlements(7, "brick");
+			notifySettlements(11, "brick");
+			notifySettlements(12, "brick");
+			notifySettlements(16, "brick");
+			notifySettlements(17, "brick");
+			notifySettlements(22, "brick");
+			notifySettlements(19, "lumber");
+			notifySettlements(24, "lumber");
+			notifySettlements(25, "lumber");
+			notifySettlements(30, "lumber");
+			notifySettlements(31, "lumber");
+			notifySettlements(36, "lumber");
+			break;
+		case 5:
+			notifySettlements(9, "brick");
+			notifySettlements(13, "brick");
+			notifySettlements(14, "brick");
+			notifySettlements(18, "brick");
+			notifySettlements(19, "brick");
+			notifySettlements(24, "brick");
+			notifySettlements(39, "iron");
+			notifySettlements(43, "iron");
+			notifySettlements(44, "iron");
+			notifySettlements(47, "iron");
+			notifySettlements(48, "iron");
+			notifySettlements(51, "iron");
+			break;
+		case 6:
+			notifySettlements(8, "iron");
+			notifySettlements(12, "iron");
+			notifySettlements(13, "iron");
+			notifySettlements(17, "iron");
+			notifySettlements(18, "iron");
+			notifySettlements(23, "iron");
+			notifySettlements(41, "lumber");
+			notifySettlements(45, "lumber");
+			notifySettlements(46, "lumber");
+			notifySettlements(49, "lumber");
+			notifySettlements(50, "lumber");
+			notifySettlements(53, "lumber");
+			break;
+		case 7:
+			moveThief();
+			break;
+		case 8:
+			notifySettlements(20, "wheat");
+			notifySettlements(25, "wheat");
+			notifySettlements(26, "wheat");
+			notifySettlements(31, "wheat");
+			notifySettlements(32, "wheat");
+			notifySettlements(37, "wheat");
+			notifySettlements(28, "brick");
+			notifySettlements(33, "brick");
+			notifySettlements(34, "brick");
+			notifySettlements(38, "brick");
+			notifySettlements(39, "brick");
+			notifySettlements(43, "brick");
+			break;
+		case 9:
+			notifySettlements(2, "wheat");
+			notifySettlements(5, "wheat");
+			notifySettlements(6, "wheat");
+			notifySettlements(9, "wheat");
+			notifySettlements(10, "wheat");
+			notifySettlements(14, "wheat");
+			notifySettlements(30, "sheep");
+			notifySettlements(35, "sheep");
+			notifySettlements(36, "sheep");
+			notifySettlements(40, "sheep");
+			notifySettlements(41, "sheep");
+			notifySettlements(45, "sheep");
+			break;
+		case 10:
+			notifySettlements(10, "sheep");
+			notifySettlements(14, "sheep");
+			notifySettlements(15, "sheep");
+			notifySettlements(19, "sheep");
+			notifySettlements(20, "sheep");
+			notifySettlements(25, "sheep");
+			notifySettlements(29, "sheep");
+			notifySettlements(34, "sheep");
+			notifySettlements(35, "sheep");
+			notifySettlements(39, "sheep");
+			notifySettlements(40, "sheep");
+			notifySettlements(44, "sheep");
+			break;
+		case 11:
+			notifySettlements(0, "lumber");
+			notifySettlements(3, "lumber");
+			notifySettlements(4, "lumber");
+			notifySettlements(7, "lumber");
+			notifySettlements(8, "lumber");
+			notifySettlements(12, "lumber");
+			notifySettlements(18, "wheat");
+			notifySettlements(23, "wheat");
+			notifySettlements(24, "wheat");
+			notifySettlements(29, "wheat");
+			notifySettlements(30, "wheat");
+			notifySettlements(35, "wheat");
+			break;
+		case 12:
+			notifySettlements(1, "sheep");
+			notifySettlements(4, "sheep");
+			notifySettlements(5, "sheep");
+			notifySettlements(8, "sheep");
+			notifySettlements(9, "sheep");
+			notifySettlements(13, "sheep");
+			break;
+		}
+		
+	}
+
+	private void notifySettlements(int i, String string) {
+		for(GamePiece p : allP){
+			if(p.location == i && p.type == 1){
+				if(string.equals("lumber")){
+					playerList.get(p.player).lumber++;
+				}
+				else if(string.equals("brick")){
+					playerList.get(p.player).brick++;
+				}
+				else if(string.equals("sheep")){
+					playerList.get(p.player).sheep++;
+				}
+				else if(string.equals("iron")){
+					playerList.get(p.player).iron++;
+				}
+				else {
+					playerList.get(p.player).wheat++;
+				}
+			}
+			if(p.location == i && p.type == 2){
+				if(string.equals("lumber")){
+					playerList.get(p.player).lumber++;
+					playerList.get(p.player).lumber++;
+				}
+				else if(string.equals("brick")){
+					playerList.get(p.player).brick++;
+					playerList.get(p.player).brick++;
+				}
+				else if(string.equals("sheep")){
+					playerList.get(p.player).sheep++;
+					playerList.get(p.player).sheep++;
+				}
+				else if(string.equals("iron")){
+					playerList.get(p.player).iron++;
+					playerList.get(p.player).iron++;
+				}
+				else {
+					playerList.get(p.player).wheat++;
+					playerList.get(p.player).wheat++;
+				}
+			}
+		}
+		
+	}
+
+	private void moveThief() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void updateEverything() {
 		GameBoard.updateLogic(this);
 		ActivePlayer.update(this);
 		OtherPlayers.update(this);
 		ChatPanel.update(this);
 		StateOfGamePanel.update(this);
+		MainGamePanel.repaint();
 	}
 	
 }

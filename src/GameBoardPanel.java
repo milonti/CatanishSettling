@@ -218,6 +218,25 @@ public class GameBoardPanel extends JPanel {
 		for(GamePiece p : roadList){
 			if(!(p == null)) drawRoad(p.player, p.location, g);
 		}
+		
+		for(GamePiece p : gl.allP){
+			switch(p.type){
+			case 0:
+				drawRoad(p.player, p.location, g);
+				break;
+			case 1:
+				drawSett(p.player, p.location, g);
+				break;
+			case 2:
+				drawCity(p.player, p.location, g);
+				break;
+			case 3:
+				drawThief(p.player, p.location, g);
+				break;
+			}
+			
+		}
+		
 		drawRoad(1,2,g);
 		drawRoad(1,7,g);
 		drawRoad(1,16,g);
@@ -228,12 +247,24 @@ public class GameBoardPanel extends JPanel {
 		drawRoad(0,31,g);
 		drawRoad(2,48,g);
 		drawRoad(2,33,g);
-		drawRoad(3,32,g);
-		drawRoad(3,53,g);
+		drawRoad(3,38,g);
+		
+		
+		
 		
 		
 	}
 	
+	private void drawCity(int player, int location, Graphics g) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	private void drawThief(int player, int location, Graphics g) {
+		// TODO Auto-generated method stub
+		
+	}
+
 	public Polygon makeHex(int x, int y){
 		Polygon p = new Polygon();
 		p.addPoint(x, y + a + c);
@@ -244,6 +275,340 @@ public class GameBoardPanel extends JPanel {
 		p.addPoint(x + b, y + c + c);
 		
 		return p;
+	}
+	
+	int settX = 306;
+	int settY = 114;
+	
+	public void drawSett(int player, int location, Graphics g){
+		Color col = gl.playerList.get(player).color;
+		switch(location){
+		case 0:
+			g.setColor(col);
+			g.fillOval(settX, settY, 12, 12);
+			g.setColor(Color.black);
+			g.drawOval(settX, settY, 12, 12);
+			break;
+		case 1:
+			g.setColor(col);
+			g.fillOval(settX + 2*b, settY, 12, 12);
+			g.setColor(Color.black);
+			g.drawOval(settX + 2*b, settY, 12, 12);
+			break;
+		case 2:
+			g.setColor(col);
+			g.fillOval(settX + 4*b, settY, 12, 12);
+			g.setColor(Color.black);
+			g.drawOval(settX + 4*b, settY, 12, 12);
+			break;
+		case 3:
+			g.setColor(col);
+			g.fillOval(settX + -1*b, settY + 1*a, 12, 12);
+			g.setColor(Color.black);
+			g.drawOval(settX + -1*b, settY + 1*a, 12, 12);
+			break;
+		case 4:
+			g.setColor(col);
+			g.fillOval(settX + 1*b, settY + 1*a, 12, 12);
+			g.setColor(Color.black);
+			g.drawOval(settX + 1*b, settY + 1*a, 12, 12);
+			break;
+		case 5:
+			g.setColor(col);
+			g.fillOval(settX + 3*b, settY + 1*a, 12, 12);
+			g.setColor(Color.black);
+			g.drawOval(settX + 3*b, settY + 1*a, 12, 12);
+			break;
+		case 6:
+			g.setColor(col);
+			g.fillOval(settX + 5*b, settY + 1*a, 12, 12);
+			g.setColor(Color.black);
+			g.drawOval(settX + 5*b, settY + 1*a, 12, 12);
+			break;
+		case 7:
+			g.setColor(col);
+			g.fillOval(settX + -1*b, settY + 1*a + 1*c, 12, 12);
+			g.setColor(Color.black);
+			g.drawOval(settX + -1*b, settY + 1*a + 1*c, 12, 12);
+			break;
+		case 8:
+			g.setColor(col);
+			g.fillOval(settX + 1*b, settY + 1*a + 1*c, 12, 12);
+			g.setColor(Color.black);
+			g.drawOval(settX + 1*b, settY + 1*a + 1*c, 12, 12);
+			break;
+		case 9:
+			g.setColor(col);
+			g.fillOval(settX + 3*b, settY + 1*a + 1*c, 12, 12);
+			g.setColor(Color.black);
+			g.drawOval(settX + 3*b, settY + 1*a + 1*c, 12, 12);
+			break;
+		case 10:
+			g.setColor(col);
+			g.fillOval(settX + 5*b, settY + 1*a + 1*c, 12, 12);
+			g.setColor(Color.black);
+			g.drawOval(settX + 5*b, settY + 1*a + 1*c, 12, 12);
+			break;
+		case 11:
+			g.setColor(col);
+			g.fillOval(settX + -2*b, settY + 2*a + 1*c, 12, 12);
+			g.setColor(Color.black);
+			g.drawOval(settX + -2*b, settY + 2*a + 1*c, 12, 12);
+			break;
+		case 12:
+			g.setColor(col);
+			g.fillOval(settX + -0*b, settY + 2*a + 1*c, 12, 12);
+			g.setColor(Color.black);
+			g.drawOval(settX + -0*b, settY + 2*a + 1*c, 12, 12);
+			break;
+		case 13:
+			g.setColor(col);
+			g.fillOval(settX + 2*b, settY + 2*a + 1*c, 12, 12);
+			g.setColor(Color.black);
+			g.drawOval(settX + 2*b, settY + 2*a + 1*c, 12, 12);
+			break;
+		case 14:
+			g.setColor(col);
+			g.fillOval(settX + 4*b, settY + 2*a + 1*c, 12, 12);
+			g.setColor(Color.black);
+			g.drawOval(settX + 4*b, settY + 2*a + 1*c, 12, 12);
+			break;
+		case 15:
+			g.setColor(col);
+			g.fillOval(settX + 6*b, settY + 2*a + 1*c, 12, 12);
+			g.setColor(Color.black);
+			g.drawOval(settX + 6*b, settY + 2*a + 1*c, 12, 12);
+			break;
+		case 16:
+			g.setColor(col);
+			g.fillOval(settX + -2*b, settY + 2*a + 2*c, 12, 12);
+			g.setColor(Color.black);
+			g.drawOval(settX + -2*b, settY + 2*a + 2*c, 12, 12);
+			break;
+		case 17:
+			g.setColor(col);
+			g.fillOval(settX + -0*b, settY + 2*a + 2*c, 12, 12);
+			g.setColor(Color.black);
+			g.drawOval(settX + -0*b, settY + 2*a + 2*c, 12, 12);
+			break;
+		case 18:
+			g.setColor(col);
+			g.fillOval(settX + 2*b, settY + 2*a + 2*c, 12, 12);
+			g.setColor(Color.black);
+			g.drawOval(settX + 2*b, settY + 2*a + 2*c, 12, 12);
+			break;
+		case 19:
+			g.setColor(col);
+			g.fillOval(settX + 4*b, settY + 2*a + 2*c, 12, 12);
+			g.setColor(Color.black);
+			g.drawOval(settX + 4*b, settY + 2*a + 2*c, 12, 12);
+			break;
+		case 20:
+			g.setColor(col);
+			g.fillOval(settX + 6*b, settY + 2*a + 2*c, 12, 12);
+			g.setColor(Color.black);
+			g.drawOval(settX + 6*b, settY + 2*a + 2*c, 12, 12);
+			break;
+		case 21:
+			g.setColor(col);
+			g.fillOval(settX + -3*b, settY + 3*a + 2*c, 12, 12);
+			g.setColor(Color.black);
+			g.drawOval(settX + -3*b, settY + 3*a + 2*c, 12, 12);
+			break;
+		case 22:
+			g.setColor(col);
+			g.fillOval(settX + -1*b, settY + 3*a + 2*c, 12, 12);
+			g.setColor(Color.black);
+			g.drawOval(settX + -1*b, settY + 3*a + 2*c, 12, 12);
+			break;
+		case 23:
+			g.setColor(col);
+			g.fillOval(settX + 1*b, settY + 3*a + 2*c, 12, 12);
+			g.setColor(Color.black);
+			g.drawOval(settX + 1*b, settY + 3*a + 2*c, 12, 12);
+			break;
+		case 24:
+			g.setColor(col);
+			g.fillOval(settX + 3*b, settY + 3*a + 2*c, 12, 12);
+			g.setColor(Color.black);
+			g.drawOval(settX + 3*b, settY + 3*a + 2*c, 12, 12);
+			break;
+		case 25:
+			g.setColor(col);
+			g.fillOval(settX + 5*b, settY + 3*a + 2*c, 12, 12);
+			g.setColor(Color.black);
+			g.drawOval(settX + 5*b, settY + 3*a + 2*c, 12, 12);
+			break;
+		case 26:
+			g.setColor(col);
+			g.fillOval(settX + 7*b, settY + 3*a + 2*c, 12, 12);
+			g.setColor(Color.black);
+			g.drawOval(settX + 7*b, settY + 3*a + 2*c, 12, 12);
+			break;
+		case 27:
+			g.setColor(col);
+			g.fillOval(settX + -3*b, settY + 3*a + 3*c, 12, 12);
+			g.setColor(Color.black);
+			g.drawOval(settX + -3*b, settY + 3*a + 3*c, 12, 12);
+			break;
+		case 28:
+			g.setColor(col);
+			g.fillOval(settX + -1*b, settY + 3*a + 3*c, 12, 12);
+			g.setColor(Color.black);
+			g.drawOval(settX + -1*b, settY + 3*a + 3*c, 12, 12);
+			break;
+		case 29:
+			g.setColor(col);
+			g.fillOval(settX + 1*b, settY + 3*a + 3*c, 12, 12);
+			g.setColor(Color.black);
+			g.drawOval(settX + 1*b, settY + 3*a + 3*c, 12, 12);
+			break;
+		case 30:
+			g.setColor(col);
+			g.fillOval(settX + 3*b, settY + 3*a + 3*c, 12, 12);
+			g.setColor(Color.black);
+			g.drawOval(settX + 3*b, settY + 3*a + 3*c, 12, 12);
+			break;
+		case 31:
+			g.setColor(col);
+			g.fillOval(settX + 5*b, settY + 3*a + 3*c, 12, 12);
+			g.setColor(Color.black);
+			g.drawOval(settX + 5*b, settY + 3*a + 3*c, 12, 12);
+			break;
+		case 32:
+			g.setColor(col);
+			g.fillOval(settX + 7*b, settY + 3*a + 3*c, 12, 12);
+			g.setColor(Color.black);
+			g.drawOval(settX + 7*b, settY + 3*a + 3*c, 12, 12);
+			break;
+		case 33:
+			g.setColor(col);
+			g.fillOval(settX + -2*b, settY + 4*a + 3*c, 12, 12);
+			g.setColor(Color.black);
+			g.drawOval(settX + -2*b, settY + 4*a + 3*c, 12, 12);
+			break;
+		case 34:
+			g.setColor(col);
+			g.fillOval(settX + -0*b, settY + 4*a + 3*c, 12, 12);
+			g.setColor(Color.black);
+			g.drawOval(settX + -0*b, settY + 4*a + 3*c, 12, 12);
+			break;
+		case 35:
+			g.setColor(col);
+			g.fillOval(settX + 2*b, settY + 4*a + 3*c, 12, 12);
+			g.setColor(Color.black);
+			g.drawOval(settX + 2*b, settY + 4*a + 3*c, 12, 12);
+			break;
+		case 36:
+			g.setColor(col);
+			g.fillOval(settX + 4*b, settY + 4*a + 3*c, 12, 12);
+			g.setColor(Color.black);
+			g.drawOval(settX + 4*b, settY + 4*a + 3*c, 12, 12);
+			break;
+		case 37:
+			g.setColor(col);
+			g.fillOval(settX + 6*b, settY + 4*a + 3*c, 12, 12);
+			g.setColor(Color.black);
+			g.drawOval(settX + 6*b, settY + 4*a + 3*c, 12, 12);
+			break;
+		case 38:
+			g.setColor(col);
+			g.fillOval(settX + -2*b, settY + 4*a + 4*c, 12, 12);
+			g.setColor(Color.black);
+			g.drawOval(settX + -2*b, settY + 4*a + 4*c, 12, 12);
+			break;
+		case 39:
+			g.setColor(col);
+			g.fillOval(settX + -0*b, settY + 4*a + 4*c, 12, 12);
+			g.setColor(Color.black);
+			g.drawOval(settX + -0*b, settY + 4*a + 4*c, 12, 12);
+			break;
+		case 40:
+			g.setColor(col);
+			g.fillOval(settX + 2*b, settY + 4*a + 4*c, 12, 12);
+			g.setColor(Color.black);
+			g.drawOval(settX + 2*b, settY + 4*a + 4*c, 12, 12);
+			break;
+		case 41:
+			g.setColor(col);
+			g.fillOval(settX + 4*b, settY + 4*a + 4*c, 12, 12);
+			g.setColor(Color.black);
+			g.drawOval(settX + 4*b, settY + 4*a + 4*c, 12, 12);
+			break;
+		case 42:
+			g.setColor(col);
+			g.fillOval(settX + 6*b, settY + 4*a + 4*c, 12, 12);
+			g.setColor(Color.black);
+			g.drawOval(settX + 6*b, settY + 4*a + 4*c, 12, 12);
+			break;
+		case 43:
+			g.setColor(col);
+			g.fillOval(settX + -1*b, settY + 5*a + 4*c, 12, 12);
+			g.setColor(Color.black);
+			g.drawOval(settX + -1*b, settY + 5*a + 4*c, 12, 12);
+			break;
+		case 44:
+			g.setColor(col);
+			g.fillOval(settX + 1*b, settY + 5*a + 4*c, 12, 12);
+			g.setColor(Color.black);
+			g.drawOval(settX + 1*b, settY + 5*a + 4*c, 12, 12);
+			break;
+		case 45:
+			g.setColor(col);
+			g.fillOval(settX + 3*b, settY + 5*a + 4*c, 12, 12);
+			g.setColor(Color.black);
+			g.drawOval(settX + 3*b, settY + 5*a + 4*c, 12, 12);
+			break;
+		case 46:
+			g.setColor(col);
+			g.fillOval(settX + 5*b, settY + 5*a + 4*c, 12, 12);
+			g.setColor(Color.black);
+			g.drawOval(settX + 5*b, settY + 5*a + 4*c, 12, 12);
+			break;
+		case 47:
+			g.setColor(col);
+			g.fillOval(settX + -1*b, settY + 5*a + 5*c, 12, 12);
+			g.setColor(Color.black);
+			g.drawOval(settX + -1*b, settY + 5*a + 5*c, 12, 12);
+			break;
+		case 48:
+			g.setColor(col);
+			g.fillOval(settX + 1*b, settY + 5*a + 5*c, 12, 12);
+			g.setColor(Color.black);
+			g.drawOval(settX + 1*b, settY + 5*a + 5*c, 12, 12);
+			break;
+		case 49:
+			g.setColor(col);
+			g.fillOval(settX + 3*b, settY + 5*a + 5*c, 12, 12);
+			g.setColor(Color.black);
+			g.drawOval(settX + 3*b, settY + 5*a + 5*c, 12, 12);
+			break;
+		case 50:
+			g.setColor(col);
+			g.fillOval(settX + 5*b, settY + 5*a + 5*c, 12, 12);
+			g.setColor(Color.black);
+			g.drawOval(settX + 5*b, settY + 5*a + 5*c, 12, 12);
+			break;
+		case 51:
+			g.setColor(col);
+			g.fillOval(settX + 0*b, settY + 6*a + 5*c, 12, 12);
+			g.setColor(Color.black);
+			g.drawOval(settX + 0*b, settY + 6*a + 5*c, 12, 12);
+			break;
+		case 52:
+			g.setColor(col);
+			g.fillOval(settX + 2*b, settY + 6*a + 5*c, 12, 12);
+			g.setColor(Color.black);
+			g.drawOval(settX + 2*b, settY + 6*a + 5*c, 12, 12);
+			break;
+		case 53:
+			g.setColor(col);
+			g.fillOval(settX + 4*b, settY + 6*a + 5*c, 12, 12);
+			g.setColor(Color.black);
+			g.drawOval(settX + 4*b, settY + 6*a + 5*c, 12, 12);
+			break;
+		}
+		
 	}
 	
 	public void drawRoad(int player, int location, Graphics g){
@@ -479,10 +844,10 @@ public class GameBoardPanel extends JPanel {
 			road.addPoint(270 + 6*b, 144 + 2*(a+c));
 			break;
 		case 38:
-			road.addPoint(278 + 6*b, 144 + 4*(a+c));
-			road.addPoint(278 + 6*b, 180 + 4*(a+c));
-			road.addPoint(270 + 6*b, 180 + 4*(a+c));
-			road.addPoint(270 + 6*b, 144 + 4*(a+c));
+			road.addPoint(278 + 8*b, 144 + 2*(a+c));
+			road.addPoint(278 + 8*b, 180 + 2*(a+c));
+			road.addPoint(270 + 8*b, 180 + 2*(a+c));
+			road.addPoint(270 + 8*b, 144 + 2*(a+c));
 			break;
 		case 39:
 			road.addPoint(313 + -3*b, 124 + 3*(a+c));

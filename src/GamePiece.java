@@ -1,4 +1,14 @@
 public class GamePiece {
+		public GamePiece(int player, int loc, int type) {
+		this.player = player;
+		this.location = loc;
+		this.type = type;
+	}
+
+		public GamePiece() {
+			// TODO Auto-generated constructor stub
+		}
+
 		/**
 		 * road = 0
 		 * settlement = 1

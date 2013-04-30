@@ -68,7 +68,7 @@ public class MainGamePanel extends JPanel {
 		
 		GameBoard.repaint();
 		gl.setPanels(GameBoard, StateOfGamePanel, ActivePlayer, OtherPlayers, ChatPanel, this);
-		
+		gl.updateEverything();
 	}
 	
 	public JPanel getActivePlayer() {
