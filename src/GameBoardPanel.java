@@ -218,6 +218,18 @@ public class GameBoardPanel extends JPanel {
 		for(GamePiece p : roadList){
 			if(!(p == null)) drawRoad(p.player, p.location, g);
 		}
+		drawRoad(1,2,g);
+		drawRoad(1,7,g);
+		drawRoad(1,16,g);
+		drawRoad(1,15,g);
+		drawRoad(0,25,g);
+		drawRoad(0,26,g);
+		drawRoad(0,30,g);
+		drawRoad(0,31,g);
+		drawRoad(2,48,g);
+		drawRoad(2,33,g);
+		drawRoad(3,32,g);
+		drawRoad(3,53,g);
 		
 		
 	}
@@ -681,6 +693,7 @@ public class GameBoardPanel extends JPanel {
 	public void updateLogic(GameLogic l) {
 		this.gl = l;
 		this.roadList = gl.road;  
+		//this.repaint();
 	}
 	
 	

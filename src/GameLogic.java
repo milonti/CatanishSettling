@@ -44,7 +44,11 @@ public class GameLogic {
 		
 		road = new ArrayList<GamePiece>();
 		verts = new ArrayList<GamePiece>(54);
-		
+		GamePiece G=new GamePiece();
+		G.location=5;
+		G.player=2;
+		G.type=0;
+		road.add(G);
 		playerList = new ArrayList<Player>();
 		loseR = new ArrayList<String>();
 		winR = new ArrayList<String>();
@@ -290,7 +294,7 @@ public class GameLogic {
 		aiResponses.put("lose", loseR);//when to check for this?
 		aiResponses.put("win", winR);//continue for other responses
 		//appropriateResponse, so gamelogic.aiResponses("win")
-		
+		//updateEverything();
 		
 			
 	}
