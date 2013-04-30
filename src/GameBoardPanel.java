@@ -34,6 +34,7 @@ public class GameBoardPanel extends JPanel {
 	private ArrayList<GamePiece> roadList;
 	
 	
+	
 	public void paint(Graphics g){
 		
 		Polygon bigHex = new Polygon();

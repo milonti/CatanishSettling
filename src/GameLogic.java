@@ -373,6 +373,25 @@ public class GameLogic {
 		tFrame.setVisible(true);
 		
 	}
+	public void placeRoad(int activePlayerNum) {
+		/*
+		MainGamePanel.setVisible(false);
+		tFrame = new JFrame("Trade Window");
+		TradeWindow tPanel = new TradeWindow(activePlayerNum, this);
+		tFrame.setBounds(100, 100, 500, 400);
+		tFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		tFrame.add(tPanel);
+		tFrame.setVisible(true);
+		*/
+		tFrame = new JFrame("Road Window");
+		PlaceWindow wPanel=new PlaceWindow(activePlayerNum, this);
+		tFrame.setBounds(100, 100, 100, 100);
+		tFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		tFrame.add(wPanel);
+		tFrame.setVisible(true);
+		
+	}
+	
 	
 	public void startAiTrade(int aiPlayerNum, int[] offers){
 		MainGamePanel.setVisible(false);

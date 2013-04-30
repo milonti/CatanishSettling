@@ -10,6 +10,7 @@ import javax.swing.JSeparator;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.JTextField;
 
@@ -59,6 +60,11 @@ public class ActivePlayerPanel extends JPanel {
 	private int yearI=0;
 	private int victoryI=0;
 	private int resources=0;
+	private int soldierHand=0;
+	private int monopolyHand=0;
+	private int roadBuildHand=0;
+	private int yearPlentyHand=0;
+	private int victoryHand=0;
 	private JLabel lblP1;
 	
 	
@@ -248,12 +254,16 @@ public class ActivePlayerPanel extends JPanel {
 		layout.putConstraint(SpringLayout.WEST, btnBuildRoad, 2, SpringLayout.WEST, this);
 		layout.putConstraint(SpringLayout.EAST, btnBuildRoad, -2, SpringLayout.EAST, this);
 		add(btnBuildRoad);
+		btnBuildRoad.setActionCommand("road");
+		btnBuildRoad.addActionListener(new RdListener());
 		
 		JButton btnBuildSet = new JButton("Sett: 1L, 1B, 1W, 1S");
 		layout.putConstraint(SpringLayout.NORTH, btnBuildSet, 6, SpringLayout.SOUTH, btnBuildRoad);
 		layout.putConstraint(SpringLayout.WEST, btnBuildSet, 2, SpringLayout.WEST, this);
 		layout.putConstraint(SpringLayout.EAST, btnBuildSet, -2, SpringLayout.EAST, this);
 		add(btnBuildSet);
+		btnBuildSet.setActionCommand("settle");
+		btnBuildSet.addActionListener(new StListener());
 		
 		JButton btnBuildCity = new JButton("City: 2W, 3I, 1Sett");
 		layout.putConstraint(SpringLayout.NORTH, btnBuildCity, 6, SpringLayout.SOUTH, btnBuildSet);
@@ -312,6 +322,56 @@ public class ActivePlayerPanel extends JPanel {
 			
 			
 			}
+			
+		}
+		
+		
+		
+	}
+	class RdListener implements ActionListener {
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			String source = e.getActionCommand();
+			if(source.equals("road")){
+				/*
+				GamePiece C=new GamePiece();
+				C.location=4;
+				C.player=gl.actPNum;
+				C.type=1;
+				gl.verts.add(C);
+				ArrayList<Integer> pull=gl.useableRoadLocations(gl.activeP);//pull because pull from this
+				GamePiece P=new GamePiece();
+				//System.out.println(pull.get(0));
+				//if(pull.size()>0)P.location=pull.get(0);
+				P.location=3;
+				P.player=gl.actPNum;
+				P.type=0;
+				gl.road.add(P);
+				
+				gl.placeRoad(gl.actPNum);
+				*/
+				System.out.println("tried to add a damn road");
+			}
+			
+			
+		}
+		
+		
+		
+	}
+	class StListener implements ActionListener {
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			String source = e.getActionCommand();
+			if(source.equals("settle")){
+				gl.placeRoad(gl.actPNum);
+			
+			
+			}
+			
+			
 		}
 		
 		
